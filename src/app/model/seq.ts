@@ -1,12 +1,11 @@
 import { IUPAC } from './IUPAC';
-import { Alphabet } from './alphabet';
 
 export class Seq {
 
   seq: string;
-  alphabet: Alphabet;
+  alphabet: string;
 
-  constructor(seq?: string, alphabet?: Alphabet) {
+  constructor(seq?: string, alphabet?: string) {
     this.seq = seq.toUpperCase();
     this.alphabet = alphabet;
   }
@@ -15,7 +14,7 @@ export class Seq {
     return this.seq;
   }
 
-  getAlphabet(): Alphabet {
+  getAlphabet(): string {
     return this.alphabet;
   }
 
@@ -23,7 +22,7 @@ export class Seq {
     this.seq = seq.toUpperCase();
   }
 
-  setAlphabet(alphabet: Alphabet): void {
+  setAlphabet(alphabet: string): void {
     this.alphabet = alphabet;
   }
 
@@ -37,7 +36,7 @@ export class Seq {
    * @return true if the sequence of this object is invalid; false otherwise
    */
   invalid(): boolean {
-    const INVALID_ALPHABET = new RegExp(`[^${this.alphabet.letters}]`, 'i');
+    const INVALID_ALPHABET = new RegExp(`[^${this.alphabet}]`, 'i');
     return INVALID_ALPHABET.test(this.seq);
   }
 
@@ -48,9 +47,9 @@ export class Seq {
    */
   transcribe(): any {
     let rna = null;
-    if (this.alphabet == DNA && !this.invalid()) {
+    if (this.alphabet == IUPAC.unambiguous_dna && !this.invalid()) {
       // global (g) and case-insensitive (i) replacement
-      rna = new Seq(this.getSeq().replace(/T/gi, 'U'), RNA);
+      rna = new Seq(this.getSeq().replace(/T/gi, 'U'), IUPAC.unambiguous_rna);
     }
     return rna;
   }
