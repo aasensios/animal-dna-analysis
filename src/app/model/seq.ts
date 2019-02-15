@@ -57,9 +57,9 @@ export class Seq {
    */
   transcribe(): any {
     let rna = null;
-    if (this.alphabet == IUPAC.unambiguous_dna && !this.invalid()) {
+    if (this.alphabet == IUPAC.unambiguousDna && !this.invalid()) {
       // global (g) and case-insensitive (i) replacement
-      rna = new Seq(this.getSeq().replace(/T/gi, 'U'), IUPAC.unambiguous_rna);
+      rna = new Seq(this.getSeq().replace(/T/gi, 'U'), IUPAC.unambiguousRna);
     }
     return rna;
   }

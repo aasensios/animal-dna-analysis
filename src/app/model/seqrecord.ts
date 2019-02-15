@@ -8,7 +8,7 @@ import { Seq } from './seq';
  * @attribute {Seq} seq: sequence of this record
  * @attribute {string} name: short name for this record
  * @attribute {string} description: long string to write a relevant abstract
- * @attribute {array} annotations: associative array for some fixed data like organism
+ * @attribute {Array<string>} annotations: associative array for some fixed data like organism
  * @author Alejandro Asensio
  * @version 2019-02-15
 */
@@ -18,9 +18,9 @@ export class SeqRecord {
   seq: Seq;
   name: string;
   description: string;
-  annotations: array;
+  annotations: Array<string>;
 
-  constructor(id?: string, seq?: Seq, name?: string, description?: string, annotations?: array;) {
+  constructor(id?: string, seq?: Seq, name?: string, description?: string, annotations?: Array<string>) {
     this.id = id;
     this.seq = seq;
     this.name = name;
@@ -44,7 +44,7 @@ export class SeqRecord {
     return this.description;
   }
 
-  getAnnotations(): array {
+  getAnnotations(): Array<string> {
     return this.annotations;
   }
 
@@ -64,7 +64,7 @@ export class SeqRecord {
     this.description = description;
   }
 
-  setAnnotations(annotations: array): void {
+  setAnnotations(annotations: Array<string>): void {
     this.annotations = annotations;
   }
 
