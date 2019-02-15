@@ -53,12 +53,22 @@ Y.................Tyr.................Tyrosine
 Z.................Glx.................Glutamine or Glutamic acid
 */
 
+/**
+ * @name IUPAC
+ * @description IUPAC class has a unique purpose: store constants to be used in
+ * other classes, like Seq or SeqRecord.
+ * @attribute {string} unambiguousDna: ACGT letters
+ * @attribute {string} unambiguousRna: ACGU letters
+ * @attribute {string} unambiguousProtein: ACDEFGHIKLMNPQRSTVWXY letters
+ * @author Alejandro Asensio
+ * @version 2019-02-15
+*/
 export class IUPAC {
 
-  public static unambiguous_dna: string = 'ACGT';
-  public static unambiguous_rna: string = 'ACGU';
-  public static unambiguous_protein: string = 'ACDEFGHIKLMNPQRSTVWXY';
-  public static genetic_code = {
+  public static unambiguousDna: string = 'ACGT';
+  public static unambiguousRna: string = 'ACGU';
+  public static unambiguousProtein: string = 'ACDEFGHIKLMNPQRSTVWXY';
+  public static geneticCode = {
     'UCA': 'S',
     'UCC': 'S',
     'UCG': 'S',

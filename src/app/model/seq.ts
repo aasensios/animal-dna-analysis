@@ -1,5 +1,15 @@
 import { IUPAC } from './IUPAC';
 
+/**
+ * @name Seq
+ * @description Sequence class stores a DNA or RNA or Protein string made of
+ * characters that represent nucleotides or aminoacids. It also has an associate
+ * alphabet to label its own type of sequence.
+ * @attribute {string} seq: DNA or RNA or Protein string
+ * @attribute {string} alphabet: valid letters for its own sequence
+ * @author Alejandro Asensio
+ * @version 2019-02-15
+*/
 export class Seq {
 
   seq: string;
