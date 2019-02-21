@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Laboratory } from '../model/laboratory';
+
 @Component({
   selector: 'app-laboratory',
   templateUrl: './laboratory.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaboratoryComponent implements OnInit {
 
-  constructor() { }
+  //properties
+  laboratory: Laboratory;
 
   ngOnInit() {
+  }
+
+  laboratory(): void {
+    console.log(this.laboratory);
   }
 
 }
