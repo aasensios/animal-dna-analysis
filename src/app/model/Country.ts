@@ -6,20 +6,20 @@
  * @attribute {string} name: street of the country
  * @author Andrés Tenesaca Burgos
  * @version 2019-02-23
-*/
+ */
 
-export class Country{
-  //properties
+export class Country {
+  // properties
   id: number;
   name: string;
 
-  //constructor
-  constructor(id?:number, name?:string){
+  // constructor
+  constructor(id?: number, name?: string) {
     this.id = id;
-    this. name = name;
+    this.name = name;
   }
 
-  //Getter
+  // Getter
   getId(): number {
     return this.id;
   }
@@ -28,7 +28,7 @@ export class Country{
     return this.name;
   }
 
-  //Setter
+  // Setter
   setId(id: number): void {
     this.id = id;
   }

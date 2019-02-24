@@ -1,7 +1,7 @@
-import {Country} from "./country"
+import { Country } from './Country';
 
 /**
- * @name laboratory
+ * @name Laboratory
  * @description laboratory class stores the information of the current lab
  * @attribute {string} name: street of the current lab
  * @attribute {string} street: street of the current lab
@@ -12,10 +12,10 @@ import {Country} from "./country"
  * @attribute {string} director: zipCode of the current lab
  * @author Andrés Tenesaca Burgos
  * @version 2019-02-15
-*/
+ */
 
-export class Laboratory{
-  //properties
+export class Laboratory {
+  // Properties
   name: string;
   street: string;
   number: string;
@@ -24,9 +24,16 @@ export class Laboratory{
   country: Country;
   director: string;
 
-  //Constructor
-  constructor(name?:string, street?:string, number?:string, zipCode?:string,
-  town?:string, country?:Country, director?:string){
+  // Constructor
+  constructor(
+    name?: string,
+    street?: string,
+    number?: string,
+    zipCode?: string,
+    town?: string,
+    country?: Country,
+    director?: string
+  ) {
     this.name = name;
     this.street = street;
     this.number = number;
@@ -36,28 +43,28 @@ export class Laboratory{
     this.director = director;
   }
 
-  //Getters
+  // Getters
   getName(): string {
     return this.name;
   }
 
-  getStreet(): string{
+  getStreet(): string {
     return this.street;
   }
 
-  getNumber(): string{
+  getNumber(): string {
     return this.number;
   }
 
-  getZipCode(): string{
+  getZipCode(): string {
     return this.zipCode;
   }
 
-  getTown(): string{
+  getTown(): string {
     return this.town;
   }
 
-  getCountry(): Country{
+  getCountry(): Country {
     return this.country;
   }
 
@@ -65,8 +72,8 @@ export class Laboratory{
     return this.director;
   }
 
-  //Setters
-  setName(name:string): void {
+  // Setters
+  setName(name: string): void {
     this.name = name;
   }
 
