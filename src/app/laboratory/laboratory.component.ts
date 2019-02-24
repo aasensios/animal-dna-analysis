@@ -15,7 +15,11 @@ export class LaboratoryComponent implements OnInit {
   laboratory: Laboratory;
   countries: Country[]=[];
 
+  //Methods
+  //ngOnInit will be executed teh moment the component is loaded
+  // in the application
   ngOnInit() {
+    // We access to the server in order to get country
     let countryAux: string[] = ["Barcelona", "Badalona", "Girona"];
 
     for (let i:number = 0; i < countryAux.length; i++) {
@@ -29,6 +33,12 @@ export class LaboratoryComponent implements OnInit {
     this.laboratory.setCountry(this.countries[0]);
   }
 
+  /**
+   * @name laboratoryInput
+   * @description print laboratory object in web console
+   * @author Andrés Tenesaca Burgos
+   * @version 2019-02-23
+  */
   laboratoryInput(): void {
     console.log(this.laboratory);
   }

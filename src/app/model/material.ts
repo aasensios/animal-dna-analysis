@@ -1,12 +1,14 @@
 import { Laboratory } from "./laboratory"
+import { Brand } from "./brand"
 
 /**
  * @name material
  * @description Material class stores information of the products we will need
  * to buy
  * @attribute {string} name: name of the products to buy
- * @attribute {string} brand: brands of the products to buy
- * @attribute {number} priceRange: range price of the products to buy
+ * @attribute {Brand} brand: brands of the products to buy
+ * @attribute {number} priceMin: Minimun price of the products to buy
+ * @attribute {number} priceMax: Maximun price of the products to buy
  * @attribute {Laboratory} whichLab: name of the lab to sent the product
  * @author Andrés Tenesaca Burgos
  * @version 2019-02-15
@@ -15,15 +17,18 @@ import { Laboratory } from "./laboratory"
 export class Material{
     //properties
     name: string;
-    brand: string;
-    priceRange: number;
+    brand: Brand;
+    priceMin: number;
+    priceMax: number;
     whichLab: Laboratory;
 
     //constructor
-    constructor(name?: string, brand?: string, priceRange?: number, whichLab?: Laboratory){
+    constructor(name?: string, brand?: Brand, priceMin?: number,
+      priceMax?: number, whichLab?: Laboratory){
       this.name = name;
       this.brand = brand;
-      this.priceRange = priceRange;
+      this.priceMin = priceMin;
+      this.priceMax = priceMax;
       this.whichLab = whichLab;
     }
 
@@ -32,12 +37,16 @@ export class Material{
       return this.name;
     }
 
-    getBrand(): string{
+    getBrand(): Brand{
       return this.brand;
     }
 
-    getPriceRange(): number{
-      return this.priceRange;
+    getPriceMin(): number{
+      return this.priceMin;
+    }
+
+    getPriceMax(): number{
+      return this.priceMax;
     }
 
     getWhichLab(): Laboratory{
@@ -49,12 +58,16 @@ export class Material{
       this.name = name;
     }
 
-    setBrand(brand: string): void{
+    setBrand(brand: Brand): void{
       this.brand = brand;
     }
 
-    setPriceRange(priceRange: number): void{
-      this.priceRange = priceRange;
+    setPriceMin(priceMin: number): void{
+      this.priceMin = priceMin;
+    }
+
+    setPriceMax(priceMax: number): void{
+      this.priceMax = priceMax;
     }
 
     setWhichLab(whichLab: Laboratory): void{

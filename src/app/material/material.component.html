@@ -1,0 +1,81 @@
+<form #materialForm="ngForm" (submit)="materialInput()" novalidate>
+  <div class="container well">
+    <div class="form-horizontal">
+      <br/>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>(purchases) Material Form</h2>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+
+        <label class="col-sm-2 control-label" for="formGroup"> Name* :</label>
+        <div class="col-sm-4">
+          <input class="form-control" type="text" name="matName"
+            #matName = "ngModel" [(ngModel)]="material.name"
+            InputMinLength required />
+        </div>
+        <!-- Validation div, only displayed if the ngIf condition is invalid -->
+        <div class="has-error" *ngIf="matName.touched && matName.invalid">
+          <span *ngIf="matName.errors.required">Please, name can not be empty</span>
+          <span *ngIf="matName.errors.IsNotCorrect && !matName.errors.required">
+            Please, name must have six characters at least
+          </span>
+        </div>
+
+        <label class="col-sm-2 control-label" for="formGroup">Brand: </label>
+        <div class="col-sm-2">
+          <select class="form-control" name="matBrand"
+          id="matBrand" #matBrand="ngModel"
+          [(ngModel)]="material.brand" required>
+            <option *ngFor="let brand of brands; let i = index"
+            [ngValue]="brand">
+              {{brand.getName()}}
+            </option>
+          </select>
+        </div>
+
+        <label class="col-sm-2 control-label" for="formGroup"> Price range* :</label>
+        <div class="col-sm-4">
+          <input class="form-control" type="number" name="matPriceMin"
+            #matPriceMin = "ngModel" [(ngModel)]="material.priceMin"
+            placeholder="Min" required />
+          <input class="form-control" type="number" name="matPriceMax"
+            #matPriceMax = "ngModel" [(ngModel)]="material.priceMax"
+            placeholder="Max" required />
+        </div>
+        <!-- Validation div, only displayed if the ngIf condition is invalid -->
+        <div class="has-error" *ngIf="matPriceMin.touched && matPriceMin.invalid">
+          <span *ngIf="matPriceMin.errors.required">Please, price min can not be empty</span>
+          <span *ngIf="matPriceMin > matPriceMax">asd</span>
+        </div>
+        <div class="has-error" *ngIf="matPriceMax.touched && matPriceMax.invalid">
+          <span *ngIf="matPriceMax.errors.required">Please, price max can not be empty</span>
+        </div>
+
+        <label class="col-sm-2 control-label" for="formGroup"> For which lab:</label>
+        <div class="col-sm-4">
+            <select class="form-control" name="matLab"
+            id="matLab" #matLab="ngModel"
+            [(ngModel)]="material.whichLab">
+              <option *ngFor="let lab of labs; let i = index"
+              [ngValue]="laboratory">
+                {{laboratory.getName()}}
+              </option>
+            </select>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="formGroup"></label>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success"
+          [disabled]="materialForm.invalid"> Submit </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

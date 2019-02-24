@@ -5,13 +5,16 @@ import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { SeqEntryComponent } from './seq-entry/seq-entry.component';
+import { LaboratoryComponent } from './laboratory/laboratory.component';
+import { MaterialComponent } from './material/material.component';
+
 import { InputvalidationDirective } from './directives/inputvalidation.directive';
 
 const appRoutes: Routes = [
-	{path:'new-laboratory', component: LaboratoryComponent},
 	{path:'new-seq', component: SeqEntryComponent},
+	{path:'new-laboratory', component: LaboratoryComponent},
+	{path:'new-material', component: MaterialComponent}
 ];
 
 @NgModule({
@@ -19,7 +22,8 @@ const appRoutes: Routes = [
     AppComponent,
     SeqEntryComponent,
     LaboratoryComponent,
-    InputvalidationDirective
+    InputvalidationDirective,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,

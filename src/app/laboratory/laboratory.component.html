@@ -1,10 +1,10 @@
 <form #laboratoryForm="ngForm" (submit)="laboratoryInput()" novalidate>
   <div class="container well">
-    <div class="form-horizontal" >
+    <div class="form-horizontal">
       <br/>
       <div class="row">
         <div class="col-xs-12">
-          <h2>Lab Form</h2>
+          <h2>Laboratory Form</h2>
         </div>
       </div>
       <br/>
@@ -42,7 +42,7 @@
 
           <label class="col-sm-2 control-label" for="formGroup">Number *</label>
           <div class="col-sm-4">
-            <input class="form-control" type="text" name="labNumber"
+            <input class="form-control" type="number" name="labNumber"
             #labNumber="ngModel" [(ngModel)]="laboratory.number" required />
           </div>
 
@@ -53,8 +53,9 @@
 
           <label class="col-sm-2 control-label" for="formGroup">Zip code *</label>
           <div class="col-sm-4">
-            <input class="form-control" type="text" name="labZipCode"
-            #labZipCode="ngModel" [(ngModel)]="laboratory.zipCode" required />
+            <input class="form-control" type="number" name="labZipCode"
+            #labZipCode="ngModel" [(ngModel)]="laboratory.zipCode"
+            maxlength="5" required />
           </div>
 
           <!-- Validation div, only displayed if the ngIf condition is invalid -->
@@ -72,10 +73,8 @@
             <span *ngIf="labTown.errors.required">Please, town can not be empty</span>
           </div>
 
-          <label class="col-sm-2 control-label" for="formGroup">Country *: </label>
+          <label class="col-sm-2 control-label" for="formGroup">Country: </label>
           <div class="col-sm-2">
-            <!-- <input class="form-control" type="text" name="labCountry"
-            #labCountry="ngModel" [(ngModel)]="laboratory.country" required /> -->
             <select class="form-control" name="labCountry"
             id="labCountry" #labCountry="ngModel"
             [(ngModel)]="laboratory.country" required>
@@ -85,11 +84,6 @@
               </option>
             </select>
           </div>
-
-          <div class="has-error" *ngIf="labCountry.touched && labCountry.invalid">
-            <span *ngIf="labCountry.errors.required">Please, country can not be empty</span>
-          </div>
-
         </div>
 
         <label class="col-sm-2 control-label" for="formGroup">Director *</label>

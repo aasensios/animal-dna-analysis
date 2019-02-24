@@ -18,7 +18,7 @@ export class InputvalidationDirective implements Validator {
   the directive applied
   @return the function will return an object containing the erros
   of the validation or null in case there aren't
-  @date: 01/02/19
+  @date: 23/02/19
   @author: Andrés Tenesaca Burgos
   **/
   validate(formFieldToValdiate:AbstractControl): {[key: string]: any}{
