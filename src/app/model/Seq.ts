@@ -1,15 +1,14 @@
 import { IUPAC } from './IUPAC';
 
 /**
- * @name Seq
- * @description Sequence class stores a DNA or RNA or Protein string made of
- * characters that represent nucleotides or aminoacids. It also has an associate
+ * @description Stores a DNA or RNA or Protein sequence made of characters
+ * that represent nucleotides or aminoacids. It also has an associate
  * alphabet to label its own type of sequence.
- * @attribute {string} seq: DNA or RNA or Protein string
- * @attribute {string} alphabet: valid letters for its own sequence
+ * @attribute seq: DNA or RNA or Protein string
+ * @attribute alphabet: valid letters for its own sequence
  * @author Alejandro Asensio
  * @version 2019-02-15
-*/
+ */
 export class Seq {
 
   seq: string;
@@ -57,7 +56,7 @@ export class Seq {
    */
   transcribe(): any {
     let rna = null;
-    if (this.alphabet == IUPAC.unambiguousDna && !this.invalid()) {
+    if (this.alphabet === IUPAC.unambiguousDna && !this.invalid()) {
       // global (g) and case-insensitive (i) replacement
       rna = new Seq(this.getSeq().replace(/T/gi, 'U'), IUPAC.unambiguousRna);
     }
@@ -69,4 +68,5 @@ export class Seq {
     // TODO
     return protein;
   }
+  
 }

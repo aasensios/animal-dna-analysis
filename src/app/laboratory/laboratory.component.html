@@ -13,7 +13,7 @@
         <div class="col-sm-4">
           <input class="form-control" type="text" name="labName"
             #labName = "ngModel" [(ngModel)]="laboratory.name"
-            InputMinLength required />
+            appInputMinLength required />
         </div>
 
         <!-- Validation div, only displayed if the ngIf condition is invalid -->
@@ -90,7 +90,7 @@
         <div class="col-sm-4">
           <input class="form-control" type="text" name="labDirector"
             #labDirector = "ngModel" [(ngModel)]="laboratory.director"
-            InputMinLength required />
+            appInputMinLength required />
         </div>
 
         <div class="has-error" *ngIf="labDirector.touched && labDirector.invalid">

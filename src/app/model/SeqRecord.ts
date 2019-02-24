@@ -1,7 +1,6 @@
-import { Seq } from './seq';
+import { Seq } from './Seq';
 
 /**
- * @name SeqRecord
  * @description Sequence record class stores some handy info about the sequence
  * it contains, like its name or the organism (inside the annotations array).
  * @attribute {string} id: unique code of this record
@@ -11,16 +10,21 @@ import { Seq } from './seq';
  * @attribute {Array<string>} annotations: associative array for some fixed data like organism
  * @author Alejandro Asensio
  * @version 2019-02-15
-*/
+ */
 export class SeqRecord {
-
   id: string;
   seq: Seq;
   name: string;
   description: string;
   annotations: Array<string>;
 
-  constructor(id?: string, seq?: Seq, name?: string, description?: string, annotations?: Array<string>) {
+  constructor(
+    id?: string,
+    seq?: Seq,
+    name?: string,
+    description?: string,
+    annotations?: Array<string>
+  ) {
     this.id = id;
     this.seq = seq;
     this.name = name;

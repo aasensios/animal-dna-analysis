@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-//Model
-import { Laboratory } from '../model/laboratory';
-import { Country } from '../model/country';
+// Model
+import { Laboratory } from '../model/Laboratory';
+import { Country } from '../model/Country';
 
 @Component({
   selector: 'app-laboratory',
@@ -11,9 +11,9 @@ import { Country } from '../model/country';
 })
 export class LaboratoryComponent implements OnInit {
 
-  //properties
+  // Properties
   laboratory: Laboratory;
-  countries: Country[]=[];
+  countries: Country[] = [];
 
   //Methods
   //ngOnInit will be executed teh moment the component is loaded
@@ -22,8 +22,8 @@ export class LaboratoryComponent implements OnInit {
     // We access to the server in order to get country
     let countryAux: string[] = ["Barcelona", "Badalona", "Girona"];
 
-    for (let i:number = 0; i < countryAux.length; i++) {
-        let country = new Country(i,countryAux[i]);
+    for (let i = 0; i < countryAux.length; i++) {
+        const country = new Country(i, countryAux[i]);
 
         this.countries.push(country);
     }

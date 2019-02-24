@@ -2,8 +2,8 @@ import { Directive } from '@angular/core';
 import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 
 @Directive({
-  selector: '[InputMinLength]',
-  providers: [{provide: NG_VALIDATORS, useExisting: InputvalidationDirective, multi:true}]
+  selector: '[appInputMinLength]',
+  providers: [{provide: NG_VALIDATORS, useExisting: InputvalidationDirective, multi: true}]
 })
 export class InputvalidationDirective implements Validator {
 
@@ -23,11 +23,11 @@ export class InputvalidationDirective implements Validator {
   **/
   validate(formFieldToValdiate:AbstractControl): {[key: string]: any}{
     let validInput: boolean = false;
-    if(formFieldToValdiate.value!=undefined &&
-      formFieldToValdiate.value.length>=6){
+    if (formFieldToValdiate.value !== undefined &&
+      formFieldToValdiate.value.length >= 6) {
         validInput = true;
     }
-    return validInput?null:{'IsNotCorrect':true};
+    return validInput ? null : {IsNotCorrect: true};
   }
 
 }
