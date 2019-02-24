@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { SeqEntryComponent } from './seq-entry/seq-entry.component';
+import { InputvalidationDirective } from './directives/inputvalidation.directive';
 
 const appRoutes: Routes = [
 	{path:'new-laboratory', component: LaboratoryComponent},
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SeqEntryComponent,
-    LaboratoryComponent
+    LaboratoryComponent,
+    InputvalidationDirective
   ],
   imports: [
     BrowserModule,

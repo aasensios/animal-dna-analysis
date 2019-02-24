@@ -1,145 +1,117 @@
-<form #laboratoryForm="ngForm" (submit)="laboratory()" novalidate>
+<form #laboratoryForm="ngForm" (submit)="laboratoryInput()" novalidate>
   <div class="container well">
     <div class="form-horizontal" >
+      <br/>
       <div class="row">
         <div class="col-xs-12">
-          <h2>Make a reservation in the best restaurant in the world</h2>
+          <h2>Lab Form</h2>
         </div>
       </div>
       <br/>
       <div class="form-group">
-        <div class="row">
-          <div class="col-xs-12" align="center"><h3>Personal data</h3></div>
-        </div>
         <label class="col-sm-2 control-label" for="formGroup">Name *</label>
         <div class="col-sm-4">
-          <input class="form-control" type="text" name="clientName"
-            #clientName = "ngModel"
-            [(ngModel)]="reservation.name"
-            inputMinLength
-            required />
+          <input class="form-control" type="text" name="labName"
+            #labName = "ngModel" [(ngModel)]="laboratory.name"
+            InputMinLength required />
         </div>
 
-            <!-- Validation div, only displayed if the ngIf condition is invalid -->
-            <div class="has-error" *ngIf="clientName.touched && clientName.invalid">
-              <span *ngIf="clientName.errors.required">Please, name can not be empty</span>
-              <span *ngIf="clientName.errors.IsNotCorrect && !clientName.errors.required">
-                Please, name must have six characters at least
-              </span>
-            </div>
+        <!-- Validation div, only displayed if the ngIf condition is invalid -->
+        <div class="has-error" *ngIf="labName.touched && labName.invalid">
+          <span *ngIf="labName.errors.required">Please, name can not be empty</span>
+          <span *ngIf="labName.errors.IsNotCorrect && !labName.errors.required">
+            Please, name must have six characters at least
+          </span>
+        </div>
 
-            <label class="col-sm-2 control-label" for="formGroup">Last name *</label>
-            <div class="col-sm-4">
-              <input class="form-control"
-              type="text"
-              name="surname"
-              #surname="ngModel"
-              [(ngModel)]="reservation.surname"
-              required />
-            </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-12" align="center"><h3>Address: </h3></div>
+          </div>
 
-            <label class="col-sm-2 control-label" for="formGroup">Email Adress *:</label>
-            <div class="col-sm-4">
-              <input class="form-control" type="email" name="email" required
-              #clientEmail = "ngModel"
-              [(ngModel)]="reservation.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-              <div class="has-error" *ngIf="clientEmail.touched && clientEmail.invalid">
-                <span id="help-block-matrix-range" class="help-block ">Please, enter a valid
-                  email.</span>
-                </div>
-              </div>
+          <label class="col-sm-2 control-label" for="formGroup">Street *</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="text" name="labStreet"
+            #labStreet="ngModel" [(ngModel)]="laboratory.street" required />
+          </div>
 
-              <label class="col-sm-2 control-label" for="formGroup">Phone *:</label>
-              <div class="col-sm-4">
-                <input class="form-control"
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    #phone="ngModel"
-                    placeholder="666111222"
-                    pattern="(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}"
-                    [(ngModel)]="reservation.phone"
-                required/>
-                <div class="has-error" *ngIf="phone.invalid && phone.touched">
-                  Phone number is not correct
-                </div>
-              </div>
-            </div>
+          <!-- Validation div, only displayed if the ngIf condition is invalid -->
+          <div class="has-error" *ngIf="labStreet.touched && labStreet.invalid">
+            <span *ngIf="labStreet.errors.required">Please, street can not be empty</span>
+          </div>
 
-<div class="form-group">
-  <div class="row">
-    <div class="col-xs-12" align="center"><h3>Reservation details</h3></div>
-  </div>
+          <label class="col-sm-2 control-label" for="formGroup">Number *</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="text" name="labNumber"
+            #labNumber="ngModel" [(ngModel)]="laboratory.number" required />
+          </div>
 
-  <label class="col-sm-2 control-label" for="formGroup">
-    reservation Date*: </label>
-  <div class="col-sm-6">
-    <input class="form-control" type="date"
-    #clientReservationDate="ngModel"
-    [(ngModel)]="reservation.reservationDate"
-    name="clientReservationDate"/>
-  </div>
+          <!-- Validation div, only displayed if the ngIf condition is invalid -->
+          <div class="has-error" *ngIf="labNumber.touched && labNumber.invalid">
+            <span *ngIf="labNumber.errors.required">Please, number can not be empty</span>
+          </div>
 
-  <label class="col-sm-2 control-label" for="formGroup">Reservation time: </label>
-  <div class="col-sm-2">
-    <select class="form-control" name="reservationTime"
-    id="reservationTime" #reservationTime="ngModel"
-    [(ngModel)]="reservation.reservationTime" required>
-      <option *ngFor="let reservationTime of reservationTimes; let i = index"
-      [ngValue]="reservationTime">
-        {{reservationTime.getTime()}}
-      </option>
-    </select>
-  </div>
-</div>
+          <label class="col-sm-2 control-label" for="formGroup">Zip code *</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="text" name="labZipCode"
+            #labZipCode="ngModel" [(ngModel)]="laboratory.zipCode" required />
+          </div>
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="formGroup">Table preference *</label>
-        <div class="col-sm-6">
-          <span *ngFor="let tablePreference of tablePreferences; let i = index">
-            <input type="radio" name="tablePref"
-            value={{tablePreference.getPreference()}} [checked]="i===0"
-            (click)="clickPreferences(tablePreference)"/>
-            {{tablePreference.getPreference()}}<br>
+          <!-- Validation div, only displayed if the ngIf condition is invalid -->
+          <div class="has-error" *ngIf="labZipCode.touched && labZipCode.invalid">
+            <span *ngIf="labZipCode.errors.required">Please, zip code can not be empty</span>
+          </div>
+
+          <label class="col-sm-2 control-label" for="formGroup">Town *</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="text" name="labTown"
+            #labTown="ngModel" [(ngModel)]="laboratory.town" required />
+          </div>
+
+          <div class="has-error" *ngIf="labTown.touched && labTown.invalid">
+            <span *ngIf="labTown.errors.required">Please, town can not be empty</span>
+          </div>
+
+          <label class="col-sm-2 control-label" for="formGroup">Country *: </label>
+          <div class="col-sm-2">
+            <!-- <input class="form-control" type="text" name="labCountry"
+            #labCountry="ngModel" [(ngModel)]="laboratory.country" required /> -->
+            <select class="form-control" name="labCountry"
+            id="labCountry" #labCountry="ngModel"
+            [(ngModel)]="laboratory.country" required>
+              <option *ngFor="let country of countries; let i = index"
+              [ngValue]="country">
+                {{country.getName()}}
+              </option>
+            </select>
+          </div>
+
+          <div class="has-error" *ngIf="labCountry.touched && labCountry.invalid">
+            <span *ngIf="labCountry.errors.required">Please, country can not be empty</span>
+          </div>
+
+        </div>
+
+        <label class="col-sm-2 control-label" for="formGroup">Director *</label>
+        <div class="col-sm-4">
+          <input class="form-control" type="text" name="labDirector"
+            #labDirector = "ngModel" [(ngModel)]="laboratory.director"
+            InputMinLength required />
+        </div>
+
+        <div class="has-error" *ngIf="labDirector.touched && labDirector.invalid">
+          <span *ngIf="labDirector.errors.required">Please, director can not be empty</span>
+          <span *ngIf="labDirector.errors.IsNotCorrect && !labDirector.errors.required">
+            Please, name must have six characters at least
           </span>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="formGroup">Special requests</label>
-        <div class="col-sm-6">
-          <span *ngFor="let specialRequest of specialRequests; let i = index">
-            <input type="checkbox"
-            (click)="addRemoveSpecialRequest(specialRequest)">
-            {{specialRequest.getRequest()}}
-          </span>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="formGroup">
-          Special instructions </label>
-          <div class="col-sm-4">
-            <textarea class="form-control"  id="specialInstructions"  ></textarea>
-          </div>
-          <label class="col-sm-2 control-label" for="formGroup">Total price:</label>
-          <div class="col-sm-4">
-            <input class="form-control" name="totalPrice"
-            #totalPrice="ngModel" [(ngModel)]="reservation.totalPrice"
-            type="text" readonly/>
-          </div>
-      </div>
-      <br />
-      <br />
       <div class="form-group">
         <label class="col-sm-2 control-label" for="formGroup"></label>
         <div class="col-sm-4">
           <button type="submit" class="btn btn-success"
-          [disabled]="reservationEntryForm.invalid"> Submit </button>
-          <label>
-            <input class="btn btn-default btn-primary btn-block" type="button"
-            value="Back"/>
-          </label>
+          [disabled]="laboratoryForm.invalid"> Submit </button>
         </div>
       </div>
     </div>
