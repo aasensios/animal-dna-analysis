@@ -10,16 +10,16 @@ export class InputvalidationDirective implements Validator {
   constructor() { }
 
   /**
-  @name: validate
-  @description: this method will recieve the control to validate
+  @name validate
+  @description this method will recieve the control to validate
   and will perform all the validation needed over it
-  @params: formFieldToValdiate: AbstractControl
+  @param  formFieldToValdiate
   formFieldToValdiate will be the DOM component that will have
   the directive applied
   @return the function will return an object containing the erros
   of the validation or null in case there aren't
-  @date: 23/02/19
-  @author: Andrés Tenesaca Burgos
+  @version  23/02/19
+  @author Andrés Tenesaca Burgos
   **/
   validate(formFieldToValdiate:AbstractControl): {[key: string]: any}{
     let validInput: boolean = false;

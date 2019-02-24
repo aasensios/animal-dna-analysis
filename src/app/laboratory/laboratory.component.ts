@@ -20,7 +20,7 @@ export class LaboratoryComponent implements OnInit {
   // in the application
   ngOnInit() {
     // We access to the server in order to get country
-    let countryAux: string[] = ["Barcelona", "Badalona", "Girona"];
+    const countryAux: string[] = ["Barcelona", "Badalona", "Girona"];
 
     for (let i = 0; i < countryAux.length; i++) {
         const country = new Country(i, countryAux[i]);
