@@ -14,13 +14,13 @@
         <div class="col-sm-4">
           <input class="form-control" type="text" name="matName"
             #matName = "ngModel" [(ngModel)]="material.name"
-            InputMinLength required />
+            appInputMinLength required />
         </div>
         <!-- Validation div, only displayed if the ngIf condition is invalid -->
         <div class="has-error" *ngIf="matName.touched && matName.invalid">
           <span *ngIf="matName.errors.required">Please, name can not be empty</span>
           <span *ngIf="matName.errors.IsNotCorrect && !matName.errors.required">
-            Please, name must have six characters at least
+            Name must have six characters and no numbers
           </span>
         </div>
 
@@ -28,7 +28,7 @@
         <div class="col-sm-2">
           <select class="form-control" name="matBrand"
           id="matBrand" #matBrand="ngModel"
-          [(ngModel)]="material.brand" required>
+          [(ngModel)]="material.brand">
             <option *ngFor="let brand of brands; let i = index"
             [ngValue]="brand">
               {{brand.getName()}}
@@ -52,18 +52,6 @@
         </div>
         <div class="has-error" *ngIf="matPriceMax.touched && matPriceMax.invalid">
           <span *ngIf="matPriceMax.errors.required">Please, price max can not be empty</span>
-        </div>
-
-        <label class="col-sm-2 control-label" for="formGroup"> For which lab:</label>
-        <div class="col-sm-4">
-            <select class="form-control" name="matLab"
-            id="matLab" #matLab="ngModel"
-            [(ngModel)]="material.whichLab">
-              <option *ngFor="let lab of labs; let i = index"
-              [ngValue]="laboratory">
-                {{laboratory.getName()}}
-              </option>
-            </select>
         </div>
 
       </div>

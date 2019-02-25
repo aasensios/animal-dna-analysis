@@ -20,7 +20,7 @@
         <div class="has-error" *ngIf="labName.touched && labName.invalid">
           <span *ngIf="labName.errors.required">Please, name can not be empty</span>
           <span *ngIf="labName.errors.IsNotCorrect && !labName.errors.required">
-            Please, name must have six characters at least
+            Name must have six characters and no numbers
           </span>
         </div>
 
@@ -96,7 +96,7 @@
         <div class="has-error" *ngIf="labDirector.touched && labDirector.invalid">
           <span *ngIf="labDirector.errors.required">Please, director can not be empty</span>
           <span *ngIf="labDirector.errors.IsNotCorrect && !labDirector.errors.required">
-            Please, name must have six characters at least
+            Name must have six characters and no numbers
           </span>
         </div>
       </div>

@@ -23,8 +23,11 @@ export class InputvalidationDirective implements Validator {
   **/
   validate(formFieldToValdiate:AbstractControl): {[key: string]: any}{
     let validInput: boolean = false;
+    let alphabet = new RegExp("^[a-zA-Z ]+$","i");
+
     if (formFieldToValdiate.value !== undefined &&
-      formFieldToValdiate.value.length >= 6) {
+      formFieldToValdiate.value.length >= 6  &&
+      alphabet.test(formFieldToValdiate.value)) {
         validInput = true;
     }
     return validInput ? null : {IsNotCorrect: true};

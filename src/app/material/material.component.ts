@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 //Model
-import { Laboratory } from '../model/Laboratory';
 import { Material } from '../model/Material';
 import { Brand } from '../model/Brand';
 
@@ -14,7 +13,6 @@ export class MaterialComponent implements OnInit {
   constructor() { }
 
   //properties
-  laboratory: Laboratory;
   material: Material;
   brands: Brand[]=[]; //array of Brand
 
