@@ -14,6 +14,8 @@ Created on: 2019-02-25
 
 This project shows a first approximation of our Final Grade Project. On one hand, Elisabet and Oscar are developing the Macroscopic part (citizens and pets) of the project, and in the other hand, Andrés and me, Alejandro, are developing the Microscopic part (DNA, laboratory).
 
+To test this project with angular CLI, inside the project directory, run `npm install` to get the node_modules directory.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

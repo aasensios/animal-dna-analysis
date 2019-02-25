@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 // Model
-import { IUPAC } from '../model/IUPAC';
-import { Seq } from '../model/Seq';
+import {IUPAC} from '../model/IUPAC';
+import {Alphabet} from '../model/Alphabet';
+import {Seq} from '../model/Seq';
 
 @Component({
   selector: 'app-seq-entry',
@@ -12,25 +14,27 @@ import { Seq } from '../model/Seq';
 export class SeqEntryComponent implements OnInit {
   // Properties
   seq: Seq;
-  seqTypes: string[] = ['DNA', 'RNA', 'Protein'];
+  alphabets: Alphabet[] = [];
 
   constructor() {}
 
   ngOnInit() {
-    /* const seqTypesDDBB = ['DNA', 'RNA', 'Protein'];
-    for (let seqType of seqTypesDDBB) {
-      switch (seqType) {
-        case 'DNA': {
+    const alphabetNames: string[] = ['DNA', 'RNA', 'Protein'];
+    const alphabetList: string[] = [IUPAC.unambiguousDna, IUPAC.unambiguousRna, IUPAC.unambiguousProtein];
 
-        }
-      }
-    } */
+    for (let i = 0; i < alphabetNames.length; i++) {
+      this.alphabets.push(new Alphabet(alphabetNames[i], alphabetList[i]));
+    }
 
-    this.seq = new Seq('', IUPAC.unambiguousDna);
-    console.log(this.seq);
-    
+    this.seq = new Seq(); // create new object
+    this.seq.setAlphabet(this.alphabets[0]); // initialize to first value
   }
 
+  /**
+   * @description print sequence object in web console
+   * @author Alejandro Asensio
+   * @version 2019-02-25
+   */
   seqEntry(): void {
     console.log(this.seq);
   }

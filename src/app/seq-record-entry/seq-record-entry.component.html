@@ -1,0 +1,11 @@
+<form #seqRecordEntryForm="ngForm" (submit)="seqRecordEntry()" novalidate>
+  <h3>Sequence Record Entry Form</h3>
+  <div class="form-group row">
+    <label for="id" class="col-sm-2 col-form-label">Id *</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="seqRecordId" #seqRecordId="ngModel" [(ngModel)]="SeqRecord.id"
+      inputMinLength required />
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="seqRecordEntryForm.invalid">Input Sequence Record</button>
+</form>

@@ -72,28 +72,4 @@ export class SeqRecord {
     this.annotations = annotations;
   }
 
-  // Specific class methods
-
-  // TypeScript Doc style guidelines:
-  // https://typedoc.org/guides/doccomments/
-
-  // /**
-  //  * If this is a DNA sequence, it is transcribed to an RNA sequence; that is,
-  //  * changing all letters 'T's for 'U's.
-  //  * @returns RNA Seq object when this is a valid DNA Seq; null otherwise
-  //  */
-  // transcribe(): any {
-  //   let rna = null;
-  //   if (this.alphabet == IUPAC.unambiguousDna && !this.invalid()) {
-  //     // global (g) and case-insensitive (i) replacement
-  //     rna = new Seq(this.getSeq().replace(/T/gi, 'U'), IUPAC.unambiguousRna);
-  //   }
-  //   return rna;
-  // }
-  //
-  // translate(): Seq {
-  //   let protein = new Seq('', '');
-  //   // TODO
-  //   return protein;
-  // }
 }

@@ -1,3 +1,4 @@
+import { Alphabet } from './Alphabet';
 import { IUPAC } from './IUPAC';
 
 /**
@@ -5,16 +6,16 @@ import { IUPAC } from './IUPAC';
  * that represent nucleotides or aminoacids. It also has an associate
  * alphabet to label its own type of sequence.
  * @attribute seq: DNA or RNA or Protein string
- * @attribute alphabet: valid letters for its own sequence
+ * @attribute alphabet: Alphabet object with valid letters for its own sequence
  * @author Alejandro Asensio
  * @version 2019-02-15
  */
 export class Seq {
 
   seq: string;
-  alphabet: string;
+  alphabet: Alphabet;
 
-  constructor(seq?: string, alphabet?: string) {
+  constructor(seq?: string, alphabet?: Alphabet) {
     this.seq = seq.toUpperCase();
     this.alphabet = alphabet;
   }
@@ -23,7 +24,7 @@ export class Seq {
     return this.seq;
   }
 
-  getAlphabet(): string {
+  getAlphabet(): Alphabet {
     return this.alphabet;
   }
 
@@ -31,7 +32,7 @@ export class Seq {
     this.seq = seq.toUpperCase();
   }
 
-  setAlphabet(alphabet: string): void {
+  setAlphabet(alphabet: Alphabet): void {
     this.alphabet = alphabet;
   }
 
@@ -45,7 +46,7 @@ export class Seq {
    * @return true if the sequence of this object is invalid; false otherwise
    */
   invalid(): boolean {
-    const INVALID_ALPHABET = new RegExp(`[^${this.alphabet}]`, 'i');
+    const INVALID_ALPHABET = new RegExp(`[^${this.alphabet.letters}]`, 'i');
     return INVALID_ALPHABET.test(this.seq);
   }
 
@@ -54,19 +55,28 @@ export class Seq {
    * changing all letters 'T's for 'U's.
    * @returns RNA Seq object when this is a valid DNA Seq; null otherwise
    */
-  transcribe(): any {
+  transcribe(): Seq {
     let rna = null;
-    if (this.alphabet === IUPAC.unambiguousDna && !this.invalid()) {
+    if (this.alphabet.letters === IUPAC.unambiguousDna && !this.invalid()) {
       // global (g) and case-insensitive (i) replacement
-      rna = new Seq(this.getSeq().replace(/T/gi, 'U'), IUPAC.unambiguousRna);
+      rna = new Seq(this.seq.replace(/T/gi, 'U'), new Alphabet('RNA', IUPAC.unambiguousRna));
     }
     return rna;
   }
 
+  /**
+   * If this is a DNA or RNA sequence, it is translated to an aminoacid sequence
+   * (protein), this is, changing each triplet of nucleotides for a letter that
+   * represents an animoacid.
+   * @returns Protein Seq object; null when some error occurs
+   */
   translate(): Seq {
-    let protein = new Seq('', '');
+    let protein = null;
     // TODO
+
+
+    // protein = new Seq(aminoacids, new Alphabet('Protein', IUPAC.unambiguousProtein));
     return protein;
   }
-  
+
 }
