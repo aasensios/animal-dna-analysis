@@ -20,7 +20,7 @@
         <div class="has-error" *ngIf="labName.touched && labName.invalid">
           <span *ngIf="labName.errors.required">Please, name can not be empty</span>
           <span *ngIf="labName.errors.IsNotCorrect && !labName.errors.required">
-            Name must have less tan 50 characters and no numbers
+            Name must have less tan 50 characters and only accepts letters
           </span>
         </div>
 
@@ -40,9 +40,11 @@
           <div class="has-error" *ngIf="labStreet.touched && labStreet.invalid">
             <span *ngIf="labStreet.errors.required">Please, street can not be empty</span>
             <span *ngIf="labStreet.errors.IsNotCorrect && !labStreet.errors.required">
-              Name must have less tan 50 characters and no numbers
+              Name must have less tan 50 characters and only accepts letters
             </span>
           </div>
+
+          <br/>
 
           <label class="col-sm-2 control-label" for="formGroup">Number *</label>
           <div class="col-sm-4">
@@ -59,6 +61,8 @@
             </span>
           </div>
 
+          <br/>
+
           <label class="col-sm-2 control-label" for="formGroup">Zip code *</label>
           <div class="col-sm-4">
             <input class="form-control" type="text" name="labZipCode"
@@ -74,6 +78,8 @@
             </span>
           </div>
 
+          <br/>
+
           <label class="col-sm-2 control-label" for="formGroup">Town *</label>
           <div class="col-sm-4">
             <input class="form-control" type="text" name="labTown"
@@ -84,9 +90,11 @@
           <div class="has-error" *ngIf="labTown.touched && labTown.invalid">
             <span *ngIf="labTown.errors.required">Please, town can not be empty</span>
             <span *ngIf="labTown.errors.IsNotCorrect && !labTown.errors.required">
-              Name must have less tan 50 characters and no numbers
+              Name must have less tan 50 characters and only accepts letters
             </span>
           </div>
+
+          <br/>
 
           <label class="col-sm-2 control-label" for="formGroup">Region: </label>
           <div class="col-sm-2">
@@ -101,6 +109,8 @@
           </div>
         </div>
 
+        <br/>
+
         <label class="col-sm-2 control-label" for="formGroup">Director *</label>
         <div class="col-sm-4">
           <input class="form-control" type="text" name="labDirector"
@@ -111,7 +121,7 @@
         <div class="has-error" *ngIf="labDirector.touched && labDirector.invalid">
           <span *ngIf="labDirector.errors.required">Please, director can not be empty</span>
           <span *ngIf="labDirector.errors.IsNotCorrect && !labDirector.errors.required">
-            Name must have less tan 50 characters and no numbers
+            Name must have less tan 50 characters and only accepts letters
           </span>
         </div>
       </div>

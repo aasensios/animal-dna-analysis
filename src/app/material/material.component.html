@@ -20,45 +20,53 @@
         <div class="has-error" *ngIf="matName.touched && matName.invalid">
           <span *ngIf="matName.errors.required">Please, name can not be empty</span>
           <span *ngIf="matName.errors.IsNotCorrect && !matName.errors.required">
-            Name must have less tan 50 characters and no numbers
+            Name must have less tan 50 characters and only accepts letters
           </span>
         </div>
 
+        <br/>
+
         <label class="col-sm-2 control-label" for="formGroup">Brand: </label>
         <div class="col-sm-2">
-          <select class="form-control" name="matBrand"
-          id="matBrand" #matBrand="ngModel"
-          [(ngModel)]="material.brand">
-            <option *ngFor="let brand of brands; let i = index"
-            [ngValue]="brand">
-              {{brand.getName()}}
-            </option>
-          </select>
+
+          <span *ngFor="let brand of brands; let i = index">
+            <input type="radio" name="brand"
+            value="{{brand.getName()}}" [checked]="i===0">
+            {{brand.getName()}} <br/>
+          </span>
         </div>
+
+        <br/>
 
         <label class="col-sm-2 control-label" for="formGroup"> Price range* :</label>
         <div class="col-sm-4">
           <input class="form-control" type="text" name="matPriceMin"
             #matPriceMin = "ngModel" [(ngModel)]="material.priceMin"
             placeholder="Min" maxlength="4" appPositiveNumber required />
+
+          <!-- Validation div, only displayed if the ngIf condition is invalid -->
+          <div class="has-error" *ngIf="matPriceMin.touched && matPriceMin.invalid">
+            <span *ngIf="matPriceMin.errors.required">Please, price min can not be empty</span>
+            <span *ngIf="matPriceMin.errors.IsBelowZero && !matPriceMin.errors.required">
+              Number must be greater than zero
+            </span>
+          </div>
+
+          <br/>
+
           <input class="form-control" type="text" name="matPriceMax"
             #matPriceMax = "ngModel" [(ngModel)]="material.priceMax"
             placeholder="Max" maxlength="4" appPositiveNumber required />
-        </div>
-        <!-- Validation div, only displayed if the ngIf condition is invalid -->
-        <div class="has-error" *ngIf="matPriceMin.touched && matPriceMin.invalid">
-          <span *ngIf="matPriceMin.errors.required">Please, price min can not be empty</span>
-          <span *ngIf="matPriceMin.errors.IsBelowZero && !matPriceMin.errors.required">
-            Number must be greater than zero
-          </span>
-        </div>
-        <div class="has-error" *ngIf="matPriceMax.touched && matPriceMax.invalid">
-          <span *ngIf="matPriceMax.errors.required">Please, price max can not be empty</span>
-          <span *ngIf="matPriceMax.errors.IsBelowZero && !matPriceMax.errors.required">
-            Number must be greater than zero
-          </span>
-        </div>
 
+          <!-- Validation div, only displayed if the ngIf condition is invalid -->
+          <div class="has-error" *ngIf="matPriceMax.touched && matPriceMax.invalid">
+            <span *ngIf="matPriceMax.errors.required">Please, price max can not be empty</span>
+            <span *ngIf="matPriceMax.errors.IsBelowZero && !matPriceMax.errors.required">
+              Number must be greater than zero
+            </span>
+          </div>
+          
+        </div>
       </div>
 
       <div class="form-group">
