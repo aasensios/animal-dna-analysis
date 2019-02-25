@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 //Model
-import { Laboratory } from '../model/laboratory';
-import { Material } from '../model/material';
-import { Brand } from '../model/brand';
+import { Laboratory } from '../model/Laboratory';
+import { Material } from '../model/Material';
+import { Brand } from '../model/Brand';
 
 @Component({
   selector: 'app-material',
@@ -16,22 +16,23 @@ export class MaterialComponent implements OnInit {
   //properties
   laboratory: Laboratory;
   material: Material;
-  brands: Brand[]=[];
+  brands: Brand[]=[]; //array of Brand
 
   //Methods
   //ngOnInit will be executed teh moment the component is loaded
   // in the application
   ngOnInit() {
     // We access to the server in order to get brand
-    let brandAux: string[] = ["HP", "DELL", "NCBI"];
+    let brandAux: string[] = ["HP", "DELL", "NCBI"];//array with brands
 
     for (let i:number = 0; i < brandAux.length; i++) {
-        let brand = new Brand(i,brandAux[i]);
-        this.brands.push(brand);
+      //create new object brand and saves in var brand
+      let brand = new Brand(i,brandAux[i]);
+      this.brands.push(brand);//push in object array
     }
 
-    this.material = new Material();
-    this.material.setBrand(this.brands[0]);
+    this.material = new Material(); //create new object
+    this.material.setBrand(this.brands[0]); //initialize to first value
 
   }
 

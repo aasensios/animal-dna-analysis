@@ -1,6 +1,6 @@
 /**
- * @name brand
- * @description brand class stores the information
+ * @name Brand
+ * @description Brand class stores the information
  * about the brand of the materials
  * @attribute {string} id: id of the brand
  * @attribute {string} name: street of the brand

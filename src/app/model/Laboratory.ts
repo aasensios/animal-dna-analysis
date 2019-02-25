@@ -2,7 +2,7 @@ import { Country } from './Country';
 
 /**
  * @name Laboratory
- * @description laboratory class stores the information of the current lab
+ * @description Laboratory class stores the information of the current lab
  * @attribute {string} name: street of the current lab
  * @attribute {string} street: street of the current lab
  * @attribute {string} number: number of the current lab
