@@ -25,8 +25,8 @@ export class InputvalidationDirective implements Validator {
     let validInput: boolean = false;
     let alphabet = new RegExp("^[a-zA-Z ]+$","i");
 
-    if (formFieldToValdiate.value !== undefined &&
-      formFieldToValdiate.value.length >= 6  &&
+    if (formFieldToValdiate.value != undefined &&
+      formFieldToValdiate.value.length <= 50 &&
       alphabet.test(formFieldToValdiate.value)) {
         validInput = true;
     }

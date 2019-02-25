@@ -13,6 +13,7 @@ import { MaterialComponent } from './material/material.component';
 
 //import directive validate
 import { InputvalidationDirective } from './directives/inputvalidation.directive';
+import { InputvalidationPositiveNumberDirective } from './directives/inputvalidation-positive-number.directive';
 
 //create new path to differents forms
 const appRoutes: Routes = [
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     SeqEntryComponent,
     LaboratoryComponent,
     InputvalidationDirective,
-    MaterialComponent
+    MaterialComponent,
+    InputvalidationPositiveNumberDirective
   ],
   imports: [
     BrowserModule,

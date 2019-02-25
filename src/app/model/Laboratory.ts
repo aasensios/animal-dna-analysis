@@ -1,4 +1,4 @@
-import { Country } from './Country';
+import { Region } from './Region';
 
 /**
  * @name Laboratory
@@ -8,7 +8,7 @@ import { Country } from './Country';
  * @attribute {string} number: number of the current lab
  * @attribute {string} zipCode: zipCode of the current lab
  * @attribute {string} town: town of the current lab
- * @attribute {Country} country: country of the current lab
+ * @attribute {Region} region: region of the current lab
  * @attribute {string} director: zipCode of the current lab
  * @author Andrés Tenesaca Burgos
  * @version 2019-02-15
@@ -21,7 +21,7 @@ export class Laboratory {
   number: string;
   zipCode: string;
   town: string;
-  country: Country;
+  region: Region;
   director: string;
 
   // Constructor
@@ -31,7 +31,7 @@ export class Laboratory {
     number?: string,
     zipCode?: string,
     town?: string,
-    country?: Country,
+    region?: Region,
     director?: string
   ) {
     this.name = name;
@@ -39,7 +39,7 @@ export class Laboratory {
     this.number = number;
     this.zipCode = zipCode;
     this.town = town;
-    this.country = country;
+    this.region = region;
     this.director = director;
   }
 
@@ -64,8 +64,8 @@ export class Laboratory {
     return this.town;
   }
 
-  getCountry(): Country {
-    return this.country;
+  getRegion(): Region {
+    return this.region;
   }
 
   getDirector(): string {
@@ -93,8 +93,8 @@ export class Laboratory {
     this.town = town;
   }
 
-  setCountry(country: Country): void {
-    this.country = country;
+  setRegion(region: Region): void {
+    this.region = region;
   }
 
   setDirector(director: string): void {

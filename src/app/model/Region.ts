@@ -1,14 +1,14 @@
 /**
- * @name country
- * @description country class stores the information
- * about the country of the laboratory
- * @attribute {string} id: id of the country
- * @attribute {string} name: street of the country
+ * @name Region
+ * @description Region class stores the information
+ * about the region of the laboratory
+ * @attribute {string} id: id of the region
+ * @attribute {string} name: street of the region
  * @author Andrés Tenesaca Burgos
  * @version 2019-02-23
  */
 
-export class Country {
+export class Region {
   // properties
   id: number;
   name: string;

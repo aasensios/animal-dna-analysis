@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Model
 import { Laboratory } from '../model/Laboratory';
-import { Country } from '../model/Country';
+import { Region } from '../model/Region';
 
 @Component({
   selector: 'app-laboratory',
@@ -13,7 +13,7 @@ export class LaboratoryComponent implements OnInit {
 
   // Properties
   laboratory: Laboratory;
-  countries: Country[] = []; //array of Country
+  regions: Region[] = []; //array of Regions
 
   //Methods
   //ngOnInit will be executed teh moment the component is loaded
@@ -21,20 +21,20 @@ export class LaboratoryComponent implements OnInit {
   ngOnInit() {
     // We access to the server in order to get country
 
-    //array with countries
-    const countryAux: string[] = ["Barcelona", "Badalona", "Girona"];
+    //array with regions
+    const regionAux: string[] = ["Barcelona", "Badalona", "Girona", "Lleida"];
 
-    for (let i = 0; i < countryAux.length; i++) {
-      //create object country with id and value and saves in var country
-      const country = new Country(i, countryAux[i]);
+    for (let i = 0; i < regionAux.length; i++) {
+      //create object region with id and value and saves in var region
+      const region = new Region(i, regionAux[i]);
 
-      this.countries.push(country); //push in country array
+      this.regions.push(region); //push in region array
     }
 
     this.laboratory = new Laboratory(); //create new laboratory
 
-    //initialize country to first value
-    this.laboratory.setCountry(this.countries[0]);
+    //initialize region to first value
+    this.laboratory.setRegion(this.regions[0]);
   }
 
   /**
