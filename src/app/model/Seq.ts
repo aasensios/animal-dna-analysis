@@ -1,40 +1,22 @@
-import { Alphabet } from './Alphabet';
 import { IUPAC } from './IUPAC';
 
 /**
- * @description Stores a DNA or RNA or Protein sequence made of characters
- * that represent nucleotides or aminoacids. It also has an associate
- * alphabet to label its own type of sequence.
- * @attribute seq: DNA or RNA or Protein string
- * @attribute alphabet: Alphabet object with valid letters for its own sequence
+ * @description Stores a DNA/RNA/protein sequence made of characters
+ * that represent nucleotides or aminoacids in each case. It also has an associate
+ * type that refers to its own type of sequence.
  * @author Alejandro Asensio
  * @version 2019-02-15
  */
 export class Seq {
 
-  seq: string;
-  alphabet: Alphabet;
-
-  constructor(seq?: string, alphabet?: Alphabet) {
-    this.seq = seq.toUpperCase();
-    this.alphabet = alphabet;
-  }
-
-  getSeq(): string {
-    return this.seq;
-  }
-
-  getAlphabet(): Alphabet {
-    return this.alphabet;
-  }
-
-  setSeq(seq: string): void {
-    this.seq = seq.toUpperCase();
-  }
-
-  setAlphabet(alphabet: Alphabet): void {
-    this.alphabet = alphabet;
-  }
+  // Following the ngModel Angular Tour of Heroes tutorial:
+  // https://angular.io/guide/forms
+  // we only need to make public the attributes in constructor
+  // in order to access them (avoiding getters and setters).
+  constructor(
+    public seq?: string,
+    public type?: string
+  ) {  }
 
   // Specific class methods
 
@@ -42,41 +24,44 @@ export class Seq {
   // https://typedoc.org/guides/doccomments/
 
   /**
-   * Validates its own seq attribute with its own alphabet attribute.
+   * Validates its own seq attribute against its own type attribute.
    * @return true if the sequence of this object is invalid; false otherwise
    */
   invalid(): boolean {
-    const INVALID_ALPHABET = new RegExp(`[^${this.alphabet.letters}]`, 'i');
-    return INVALID_ALPHABET.test(this.seq);
+    const letters = `IUPAC.${this.type}`;
+    const invalidSeqRegex = new RegExp(`[^${letters}]`, 'i');
+    return invalidSeqRegex.test(this.seq);
   }
 
   /**
+   * TODO: method not used yet
    * If this is a DNA sequence, it is transcribed to an RNA sequence; that is,
    * changing all letters 'T's for 'U's.
    * @returns RNA Seq object when this is a valid DNA Seq; null otherwise
    */
   transcribe(): Seq {
     let rna = null;
-    if (this.alphabet.letters === IUPAC.unambiguousDna && !this.invalid()) {
+    if (this.type === 'DNA' && !this.invalid()) {
       // global (g) and case-insensitive (i) replacement
-      rna = new Seq(this.seq.replace(/T/gi, 'U'), new Alphabet('RNA', IUPAC.unambiguousRna));
+      rna = new Seq(this.seq.replace(/T/gi, 'U'), 'RNA');
     }
     return rna;
   }
 
   /**
+   * TODO: method not used yet
    * If this is a DNA or RNA sequence, it is translated to an aminoacid sequence
    * (protein), this is, changing each triplet of nucleotides for a letter that
    * represents an animoacid.
    * @returns Protein Seq object; null when some error occurs
    */
-  translate(): Seq {
-    let protein = null;
-    // TODO
+  // translate(): Seq {
+  //   let protein = null;
 
+  //   aminoacids = IUPAC.GENETIC_CODE ...
+  //   protein = new Seq(aminoacids, 'PROTEIN');
 
-    // protein = new Seq(aminoacids, new Alphabet('Protein', IUPAC.unambiguousProtein));
-    return protein;
-  }
+  //   return protein;
+  // }
 
 }

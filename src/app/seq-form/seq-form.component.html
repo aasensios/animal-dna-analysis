@@ -1,0 +1,46 @@
+<div [hidden]="submitted" class="container">
+  <h1>Seq Form</h1>
+  <h2>by Alejandro Asensio</h2>
+  <form (ngSubmit)="onSubmit()" #seqForm="ngForm">
+
+    <div class="form-group">
+      <label for="seq">Sequence</label>
+      <input type="text" class="form-control" id="seq" 
+      required minlength="10"
+      [(ngModel)]="model.seq" name="seq"
+      #seq="ngModel">
+      <div *ngIf="seq.invalid && (seq.dirty || seq.touched)" class="alert alert-danger">
+        <div *ngIf="seq.errors.required">
+          Sequence is required.
+        </div>
+        <div *ngIf="seq.errors.minlength">
+          Units must be at least 10 nucleotides long.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="power">Type</label>
+      <select class="form-control custom-select" id="type" required [(ngModel)]="model.type" name="type">
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!seqForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-secondary" (click)="newSeq(); seqForm.reset()">Reset</button>
+
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h2></h2>
+  <table class="table table-striped table-hover table-sm">
+    <caption>You submitted the following:</caption>
+    <tbody>
+      <tr><th>Sequence</th><td>{{ model.seq }}</td></tr>
+      <tr><th>Type</th><td>{{ model.type }}</td></tr>
+    </tbody>
+  </table>
+  <br>
+  <button class="btn btn-warning" (click)="submitted=false">Go back</button>
+</div>

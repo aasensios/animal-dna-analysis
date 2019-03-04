@@ -1,46 +1,52 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // needed to use forms
 
-import { AppRoutingModule } from './app-routing.module';
-import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module'; // needed to user routing
+import { RouterModule, Routes } from '@angular/router'; // needed to user routing
+
 import { AppComponent } from './app.component';
 
-//import module forms
-import { SeqEntryComponent } from './seq-entry/seq-entry.component';
+// Own forms
+import { SeqFormComponent } from './seq-form/seq-form.component';
+import { KitFormComponent } from './kit-form/kit-form.component';
 import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { MaterialComponent } from './material/material.component';
 
-//import directive validate
+// import directive validate
 import { InputvalidationDirective } from './directives/inputvalidation.directive';
 import { InputvalidationPositiveNumberDirective } from './directives/inputvalidation-positive-number.directive';
+import { ForbiddenNameDirective } from './directives/forbidden-name.directive';
 
-//create new path to differents forms
+// create new path to differents forms
 const appRoutes: Routes = [
-	{path:'new-seq', component: SeqEntryComponent},
-	{path:'new-laboratory', component: LaboratoryComponent},
-	{path:'new-material', component: MaterialComponent}
+  {path: 'new-seq', component: SeqFormComponent},
+  {path: 'new-kit', component: KitFormComponent},
+  {path: 'new-laboratory', component: LaboratoryComponent},
+  {path: 'new-material', component: MaterialComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SeqEntryComponent,
+    SeqFormComponent,
     LaboratoryComponent,
     InputvalidationDirective,
     MaterialComponent,
-    InputvalidationPositiveNumberDirective
+    InputvalidationPositiveNumberDirective,
+    KitFormComponent,
+    ForbiddenNameDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-		RouterModule.forRoot(
+    RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

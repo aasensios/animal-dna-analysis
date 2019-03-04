@@ -8,10 +8,10 @@
  * @version 2019-02-15
  */
 export class IUPAC {
-  public static unambiguousDna = 'ACGT';
-  public static unambiguousRna = 'ACGU';
-  public static unambiguousProtein = 'ACDEFGHIKLMNPQRSTVWXY';
-  public static geneticCode = {
+  public static DNA = 'ACGT';
+  public static RNA = 'ACGU';
+  public static PROTEIN = 'ACDEFGHIKLMNPQRSTVWXY';
+  public static GENETIC_CODE = {
     UCA: 'S',
     UCC: 'S',
     UCG: 'S',

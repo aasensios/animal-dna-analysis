@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeqEntryComponent } from './seq-entry.component';
+import { KitFormComponent } from './kit-form.component';
 
-describe('SeqEntryComponent', () => {
-  let component: SeqEntryComponent;
-  let fixture: ComponentFixture<SeqEntryComponent>;
+describe('KitFormComponent', () => {
+  let component: KitFormComponent;
+  let fixture: ComponentFixture<KitFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeqEntryComponent ]
+      declarations: [ KitFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SeqEntryComponent);
+    fixture = TestBed.createComponent(KitFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
