@@ -1,9 +1,10 @@
 /**
  * @description IUPAC class has a unique purpose: store constants to be used in
- * other classes, like Seq or SeqRecord.
- * @attribute {string} unambiguousDna: ACGT letters
- * @attribute {string} unambiguousRna: ACGU letters
- * @attribute {string} unambiguousProtein: ACDEFGHIKLMNPQRSTVWXY letters
+ * other classes, like Seq.
+ * @attribute {string} DNA: ACGT letters
+ * @attribute {string} RNA: ACGU letters
+ * @attribute {string} PROTEIN: ACDEFGHIKLMNPQRSTVWXY letters
+ * @attribute {array} GENETIC_CODE: Codon (triplet) association with aminoacids
  * @author Alejandro Asensio
  * @version 2019-02-15
  */
