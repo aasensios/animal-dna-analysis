@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // needed to use forms
 
+//Pagination
+import { NgxPaginationModule } from 'ngx-pagination';
+
+//Cookies
+import {CookieService} from 'ngx-cookie-service';
+
 import { AppRoutingModule } from './app-routing.module'; // needed to user routing
 import { RouterModule, Routes } from '@angular/router'; // needed to user routing
 
@@ -41,12 +47,13 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxPaginationModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
