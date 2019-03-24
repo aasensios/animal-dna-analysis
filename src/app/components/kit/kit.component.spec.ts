@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KitFormComponent } from './kit-form.component';
+import { KitComponent } from './kit.component';
 
-describe('KitFormComponent', () => {
-  let component: KitFormComponent;
-  let fixture: ComponentFixture<KitFormComponent>;
+describe('KitComponent', () => {
+  let component: KitComponent;
+  let fixture: ComponentFixture<KitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KitFormComponent ]
+      declarations: [ KitComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KitFormComponent);
+    fixture = TestBed.createComponent(KitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

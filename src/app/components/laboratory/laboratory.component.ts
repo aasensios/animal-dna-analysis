@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 // Model
-import { Laboratory } from '../model/Laboratory';
-import { Region } from '../model/Region';
+import { Laboratory } from '../../model/Laboratory';
+import { Region } from '../../model/Region';
 
 @Component({
   selector: 'app-laboratory',

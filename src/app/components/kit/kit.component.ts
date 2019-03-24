@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Kit } from '../model/Kit';
+import { Kit } from '../../model/Kit';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { forbiddenNameValidator } from '../directives/forbidden-name.directive';
+import { forbiddenNameValidator } from '../../directives/forbidden-name.directive';
 
 /**
  * @description Controller for the kit form.
@@ -10,11 +10,11 @@ import { forbiddenNameValidator } from '../directives/forbidden-name.directive';
  * @version 2019-03-04
  */
 @Component({
-  selector: 'app-kit-form',
-  templateUrl: './kit-form.component.html',
-  styleUrls: ['./kit-form.component.css']
+  selector: 'app-kit',
+  templateUrl: './kit.component.html',
+  styleUrls: ['./kit.component.css']
 })
-export class KitFormComponent implements OnInit {
+export class KitComponent implements OnInit {
 
   // Kit form declaration for later validation
   kitForm: FormGroup;

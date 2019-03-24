@@ -14,10 +14,10 @@ import { RouterModule, Routes } from '@angular/router'; // needed to user routin
 import { AppComponent } from './app.component';
 
 // Own forms
-import { SeqFormComponent } from './seq-form/seq-form.component';
-import { KitFormComponent } from './kit-form/kit-form.component';
-import { LaboratoryComponent } from './laboratory/laboratory.component';
-import { MaterialComponent } from './material/material.component';
+import { SequenceComponent } from './components/sequence/sequence.component';
+import { KitComponent } from './components/kit/kit.component';
+import { LaboratoryComponent } from './components/laboratory/laboratory.component';
+import { MaterialComponent } from './components/material/material.component';
 
 // import directive validate
 import { InputvalidationDirective } from './directives/inputvalidation.directive';
@@ -26,21 +26,21 @@ import { ForbiddenNameDirective } from './directives/forbidden-name.directive';
 
 // create new path to differents forms
 const appRoutes: Routes = [
-  {path: 'new-seq', component: SeqFormComponent},
-  {path: 'new-kit', component: KitFormComponent},
-  {path: 'new-laboratory', component: LaboratoryComponent},
-  {path: 'new-material', component: MaterialComponent}
+  {path: 'sequences', component: SequenceComponent},
+  {path: 'kits', component: KitComponent},
+  {path: 'laboratories', component: LaboratoryComponent},
+  {path: 'materials', component: MaterialComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SeqFormComponent,
+    SequenceComponent,
     LaboratoryComponent,
     InputvalidationDirective,
     MaterialComponent,
     InputvalidationPositiveNumberDirective,
-    KitFormComponent,
+    KitComponent,
     ForbiddenNameDirective
   ],
   imports: [

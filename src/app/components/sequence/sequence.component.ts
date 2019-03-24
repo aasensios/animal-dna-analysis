@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Seq } from '../model/Seq';
+import { Seq } from '../../model/Seq';
 
 @Component({
-  selector: 'app-seq-form',
-  templateUrl: './seq-form.component.html',
-  styleUrls: ['./seq-form.component.css']
+  selector: 'app-sequence',
+  templateUrl: './sequence.component.html',
+  styleUrls: ['./sequence.component.css']
 })
-export class SeqFormComponent implements OnInit {
+export class SequenceComponent implements OnInit {
   types: string[] = ['DNA', 'RNA', 'Protein'];
   model = new Seq();
   submitted = false;

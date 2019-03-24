@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 //Model
-import { Material } from '../model/Material';
-import { Brand } from '../model/Brand';
+import { Material } from '../../model/Material';
+import { Brand } from '../../model/Brand';
 
 @Component({
   selector: 'app-material',
