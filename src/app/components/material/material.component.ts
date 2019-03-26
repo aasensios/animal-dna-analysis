@@ -10,6 +10,16 @@ import { Brand } from '../../model/Brand';
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent implements OnInit {
+
+  materials = ['Gauntes', 'Pipeta', 'Microscopio', 'ADN de Rex'];
+
+  addMaterial(newMaterial: string) {
+    if (newMaterial) {
+      this.materials.push(newMaterial);
+    }
+  }
+
+
   constructor() { }
 
   //properties

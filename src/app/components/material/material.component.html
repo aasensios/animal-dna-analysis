@@ -13,9 +13,13 @@
         <label class="col-sm-2 control-label" for="formGroup"> Name* :</label>
         <div class="col-sm-4">
           <input class="form-control" type="text" name="matName"
-            #matName = "ngModel" [(ngModel)]="material.name"
-            appInputMinLength required />
+          placeholder="Product name" #matName = "ngModel"
+          [(ngModel)]="material.name"
+          (keyup.enter)="addMaterial(matName.value)"
+          (blur)="addMaterial(matName.value); matName.value=''"
+          appInputMinLength required />
         </div>
+
         <!-- Validation div, only displayed if the ngIf condition is invalid -->
         <div class="has-error" *ngIf="matName.touched && matName.invalid">
           <span *ngIf="matName.errors.required">Please, name can not be empty</span>
@@ -26,12 +30,18 @@
 
         <br/>
 
+        <ul><li *ngFor="let material of materials">{{material}}</li></ul>
+
+        <br/>
+
         <label class="col-sm-2 control-label" for="formGroup">Brand: </label>
         <div class="col-sm-2">
 
           <span *ngFor="let brand of brands; let i = index">
             <input type="radio" name="brand"
-            value="{{brand.getName()}}" [checked]="i===0">
+            value="{{brand.getName()}}"
+            [checked]="brand.getId() == material.getBrand().id"
+            (click)="material.setBrand(brand)">
             {{brand.getName()}} <br/>
           </span>
         </div>
@@ -65,7 +75,7 @@
               Number must be greater than zero
             </span>
           </div>
-          
+
         </div>
       </div>
 
