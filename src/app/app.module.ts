@@ -23,6 +23,7 @@ import { MaterialComponent } from './components/material/material.component';
 import { InputvalidationDirective } from './directives/inputvalidation.directive';
 import { InputvalidationPositiveNumberDirective } from './directives/inputvalidation-positive-number.directive';
 import { ForbiddenNameDirective } from './directives/forbidden-name.directive';
+import { ZipCodeDirective } from './directives/zip-code.directive';
 
 // create new path to differents forms
 const appRoutes: Routes = [
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     MaterialComponent,
     InputvalidationPositiveNumberDirective,
     KitComponent,
-    ForbiddenNameDirective
+    ForbiddenNameDirective,
+    ZipCodeDirective
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [CookieService],
+  providers: [ CookieService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
