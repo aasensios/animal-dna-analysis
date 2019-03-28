@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // needed to use forms
+import { NgxPopper } from 'angular-popper';
 
-//Pagination
+// Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
 
-//Cookies
+// Cookies
 import {CookieService} from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module'; // needed to user routing
@@ -18,6 +19,8 @@ import { SequenceComponent } from './components/sequence/sequence.component';
 import { KitComponent } from './components/kit/kit.component';
 import { LaboratoryComponent } from './components/laboratory/laboratory.component';
 import { MaterialComponent } from './components/material/material.component';
+// Pagination component
+import { SequenceManagementComponent } from './components/sequence-management/sequence-management.component';
 
 // import directive validate
 import { InputvalidationDirective } from './directives/inputvalidation.directive';
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
   {path: 'sequences', component: SequenceComponent},
   {path: 'kits', component: KitComponent},
   {path: 'laboratories', component: LaboratoryComponent},
-  {path: 'materials', component: MaterialComponent}
+  {path: 'materials', component: MaterialComponent},
+  {path: 'sequences-management', component: SequenceManagementComponent}
 ];
 
 @NgModule({
@@ -41,7 +45,8 @@ const appRoutes: Routes = [
     MaterialComponent,
     InputvalidationPositiveNumberDirective,
     KitComponent,
-    ForbiddenNameDirective
+    ForbiddenNameDirective,
+    SequenceManagementComponent
   ],
   imports: [
     BrowserModule,

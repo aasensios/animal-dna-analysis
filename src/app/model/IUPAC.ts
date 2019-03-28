@@ -1,17 +1,20 @@
 /**
- * @description IUPAC class has a unique purpose: store constants to be used in
- * other classes, like Seq.
- * @attribute {string} DNA: ACGT letters
- * @attribute {string} RNA: ACGU letters
- * @attribute {string} PROTEIN: ACDEFGHIKLMNPQRSTVWXY letters
- * @attribute {array} GENETIC_CODE: Codon (triplet) association with aminoacids
+ * @description IUPAC class has a unique purpose: store biological constants.
+ * @attribute {array} LETTERS: Types of biological molecules
+ * @attribute {array} GENETIC_CODE: Codon (triplet) association with amino acids
  * @author Alejandro Asensio
- * @version 2019-02-15
+ * @version 2019-02-29
  */
 export class IUPAC {
-  public static DNA = 'ACGT';
-  public static RNA = 'ACGU';
-  public static PROTEIN = 'ACDEFGHIKLMNPQRSTVWXY';
+
+  // Types of biological molecules and their respective letters to represent their monomers
+  public static LETTERS = {
+    DNA: 'ACGT',
+    RNA: 'ACGU',
+    Protein: 'ACDEFGHIKLMNPQRSTVWXY'
+  };
+
+  // Each codon (triplet) codifies for a single amino acid (single-letter nomenclature, see correspondiencies below)
   public static GENETIC_CODE = {
     UCA: 'S',
     UCC: 'S',
@@ -76,7 +79,7 @@ export class IUPAC {
     GGA: 'G',
     GGC: 'G',
     GGG: 'G',
-    GGU: 'G',
+    GGU: 'G'
   };
 }
 

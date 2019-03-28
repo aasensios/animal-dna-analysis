@@ -2,17 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 
+## DAWBIO2-M06 Desenvolupament web en entorn client
+### UF3 Esdeveniments - Manegament de formularis - DOM 
 
-DAWBIO2-M06 Desenvolupament web en entorn client
-Lliurament exercici UF 3 Esdeveniments. Manegament de formularis. Model d'objectes del document. - Pt3.1
+- Pt3.1 Model d'objectes del document
+- Pt3.2 Cookies i Paginació
 
-Authors: Alejandro Asensio & Andrés Tenesaca
+#### Authors: 
+- Alejandro Asensio
+- Andrés Tenesaca
 
 Created on: 2019-02-25
 
 ## Abstract
 
-This project shows a first approximation of our Final Grade Project. On one hand, Elisabet and Oscar are developing the Macroscopic part (citizens and pets) of the project, and in the other hand, Andrés and me, Alejandro, are developing the Microscopic part (DNA, laboratory).
+> This project shows a first approximation of our Final Grade Project. On one hand, Elisabet and Oscar are developing the Macroscopic part (citizens and pets) of the project, and in the other hand, Andrés and me, Alejandro, are developing the Microscopic part (DNA, laboratory).
 
 To test this project with angular CLI, inside the project directory, run `npm install` to get the node_modules directory.
 

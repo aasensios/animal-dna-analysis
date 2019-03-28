@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 import { Seq } from '../../model/Seq';
+
+import { SequenceService } from '../../services/sequence.service';
 
 @Component({
   selector: 'app-sequence',
@@ -8,9 +11,16 @@ import { Seq } from '../../model/Seq';
   styleUrls: ['./sequence.component.css']
 })
 export class SequenceComponent implements OnInit {
-  types: string[] = ['DNA', 'RNA', 'Protein'];
+  types: string[] = this.sequenceService.getTypes();
   model = new Seq();
   submitted = false;
+
+  @Input()
+  sequence: Seq;
+
+  // Get the DOM element with id reservationEntryForm https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement
+  @ViewChild('reservationEntryForm')
+  seqForm: HTMLFormElement;
 
   onSubmit() {
     this.submitted = true;
@@ -26,8 +36,10 @@ export class SequenceComponent implements OnInit {
     this.model = new Seq('', '');
   }
 
-  constructor() {}
+  constructor(
+    private cookieService: CookieService,
+    private sequenceService: SequenceService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

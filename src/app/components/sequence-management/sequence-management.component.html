@@ -1,0 +1,34 @@
+<div class="container well">
+  <form #sequenceManagementForm="ngForm" novalidate>
+
+    <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+    </pagination-controls>
+
+    <table class="table table-striped">
+      <thead>
+        <th>Type</th>
+        <th>Sequence</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let sequence of sequencesFiltered | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage}; let i = index"
+          (click)="onSelect(sequence)">
+          <td>{{ sequence.type }}</td>
+          <td>{{ sequence.seq }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="edit()">Edit</button>
+            <!-- <button class="btn btn-info" (click)="translate()">Translate</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+    </pagination-controls>
+
+  </form>
+
+  <app-sequence [sequence]="sequenceSelected" *ngIf="sequenceSelected"></app-sequence>
+
+</div>
