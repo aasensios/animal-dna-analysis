@@ -1,18 +1,8 @@
 import { Directive, Input } from '@angular/core';
 import { ValidatorFn, AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
 
-// @Directive({
-//   selector: '[appForbiddenName]',
-//   providers: [{provide: NG_VALIDATORS, useExisting: ForbiddenValidatorDirective, multi: true}]
-// })
-// export class ForbiddenNameDirective {
-
-//   constructor() { }
-
-// }
-
 /**
- * A hero's name can't match the given regular expression.
+ * A submitter's name can't match the given regular expression.
  * https://angular.io/guide/form-validation#custom-validators
  */
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
@@ -22,9 +12,7 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   };
 }
 
-/**
- * https://angular.io/guide/form-validation#adding-to-template-driven-forms
- */
+// Source: https://angular.io/guide/form-validation#adding-to-template-driven-forms
 @Directive({
   selector: '[appForbiddenName]',
   providers: [{provide: NG_VALIDATORS, useExisting: ForbiddenNameDirective, multi: true}]

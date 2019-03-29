@@ -67,7 +67,7 @@
           <div class="col-sm-4">
             <input class="form-control" type="text" name="labZipCode"
             #labZipCode="ngModel" [(ngModel)]="laboratory.zipCode"
-            maxlength="5" appPositiveNumber required />
+            maxlength="5" appPositiveNumber appZipCode required />
           </div>
 
           <!-- Validation div, only displayed if the ngIf condition is invalid -->
@@ -75,6 +75,9 @@
             <span *ngIf="labZipCode.errors.required">Please, zip code can not be empty</span>
             <span *ngIf="labZipCode.errors.IsBelowZero && !labZipCode.errors.required">
               Number must be greater than zero
+            </span>
+            <span *ngIf="labZipCode.errors.IsBelowFive && !labZipCode.errors.required">
+              Number must contain 5 digits
             </span>
           </div>
 

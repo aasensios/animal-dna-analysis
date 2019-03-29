@@ -3,34 +3,36 @@ import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 
 @Directive({
   selector: '[appInputMinLength]',
-  providers: [{provide: NG_VALIDATORS, useExisting: InputvalidationDirective, multi: true}]
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: InputvalidationDirective,
+      multi: true
+    }
+  ]
 })
 export class InputvalidationDirective implements Validator {
 
-  constructor() { }
+  constructor() {}
 
   /**
-  @name validate
-  @description this method will recieve the control to validate
-  and will perform all the validation needed over it
-  @param  formFieldToValdiate
-  formFieldToValdiate will be the DOM component that will have
-  the directive applied
-  @return the function will return an object containing the erros
-  of the validation or null in case there aren't
-  @version  23/02/19
-  @author Andrés Tenesaca Burgos
-  **/
-  validate(formFieldToValdiate:AbstractControl): {[key: string]: any}{
-    let validInput: boolean = false;
-    let alphabet = new RegExp("^[a-zA-Z ]+$","i");
+   * @description Validates the input length to be less or equal to 50 characters.
+   * @return An object containing the errors of validation process; null otherwise.
+   * @author Andres Tenesaca
+   * @version 2019-02-23
+   */
+  validate(formField: AbstractControl): { [key: string]: any } {
+    let valid = false;
+    const alphabetical = new RegExp('^[a-zA-Z ]+$', 'i');
 
-    if (formFieldToValdiate.value != undefined &&
-      formFieldToValdiate.value.length <= 50 &&
-      alphabet.test(formFieldToValdiate.value)) {
-        validInput = true;
+    if (
+      formField.value !== undefined &&
+      formField.value.length <= 50 &&
+      alphabetical.test(formField.value)
+    ) {
+      valid = true;
     }
-    return validInput ? null : {IsNotCorrect: true};
+    return valid ? null : { IsNotCorrect: true };
   }
 
 }

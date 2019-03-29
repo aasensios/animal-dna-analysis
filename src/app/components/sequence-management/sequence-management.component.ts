@@ -4,6 +4,11 @@ import { Seq } from '../../model/Seq';
 
 import { SequenceService } from '../../services/sequence.service';
 
+/**
+ * @description Controller for the sequence management pagination page.
+ * @author Alejandro Asensio
+ * @version 2019-03-28
+ */
 @Component({
   selector: 'app-sequence-management',
   templateUrl: './sequence-management.component.html',
@@ -38,6 +43,10 @@ export class SequenceManagementComponent implements OnInit {
     this.sequencesFiltered = this.sequences;
   }
 
+  /**
+   * @description Loads random sequence objects to test the app.
+   * @param items the number of objects to be randomly generated
+   */
   loadRandomSequences(items: number) {
     const types: string[] = this.sequenceService.getTypes();
     let randomType: string;
@@ -58,7 +67,7 @@ export class SequenceManagementComponent implements OnInit {
 
       // Randomize the sequence itself
       randomSeq = '';
-      for (let i = 0; i < randomLength; i++) {
+      for (let l = 0; l < randomLength; l++) {
         randomSeq += possibleLetters.charAt(
           Math.random() * possibleLetters.length
         );
@@ -69,7 +78,15 @@ export class SequenceManagementComponent implements OnInit {
     }
   }
 
+  /**
+   * Assigns the clicked sequence to sequenceSelected property.
+   * @param seq selected sequence object
+   */
   onSelect(seq: Seq) {
     this.sequenceSelected = seq;
+  }
+
+  edit(seq: Seq) {
+
   }
 }
