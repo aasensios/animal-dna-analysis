@@ -28,6 +28,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 // Pagination component
 import { SequenceManagementComponent } from './components/sequence-management/sequence-management.component';
+import { MonomersValidationDirective } from './directives/monomers-validation.directive';
 
 // create new path to differents forms
 const appRoutes: Routes = [
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     KitComponent,
     ForbiddenNameDirective,
     SequenceManagementComponent,
-    ZipCodeDirective
+    ZipCodeDirective,
+    MonomersValidationDirective
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
 
     <div class="form-group">
       <label for="usage">Usage *</label>
-      <select class="form-control custom-select" id="usage" required [(ngModel)]="model.usage" name="usage"
+      <select class="form-control custom-select" id="usage" required [(ngModel)]="kit.usage" name="usage"
         #usage="ngModel">
         <option *ngFor="let usage of usages" [value]="usage">{{ usage }}</option>
       </select>
@@ -15,7 +15,7 @@
 
     <div class="form-group">
       <label for="usage">Size *</label>
-      <select class="form-control custom-select" id="size" required [(ngModel)]="model.size" name="size"
+      <select class="form-control custom-select" id="size" required [(ngModel)]="kit.size" name="size"
         #size="ngModel">
         <option *ngFor="let size of sizes" [value]="size">{{ size }}</option>
       </select>
@@ -26,7 +26,7 @@
 
     <div class="form-group">
       <label for="units">Units *</label>
-      <input type="number" class="form-control" id="units" required min="1" max="10" [(ngModel)]="model.units"
+      <input type="number" class="form-control" id="units" required min="1" max="10" [(ngModel)]="kit.units"
         name="units" #units="ngModel">
       <div *ngIf="units.invalid && (units.dirty || units.touched)" class="alert alert-danger">
         <div *ngIf="units.errors.required">
@@ -43,7 +43,7 @@
 
     <div class="form-group">
       <label for="observations">Observations</label>
-      <input type="text" class="form-control" id="observations" required maxlength="10" [(ngModel)]="model.observations"
+      <input type="text" class="form-control" id="observations" required maxlength="10" [(ngModel)]="kit.observations"
         name="observations" #observations="ngModel">
       <div *ngIf="units.invalid && (units.dirty || units.touched)" class="alert alert-danger">
         <div *ngIf="units.errors.maxlength">
@@ -55,7 +55,7 @@
     <div class="form-group">
       <label for="submitter">Submitter *</label>
       <input type="text" class="form-control" id="submitter" required appForbiddenName="marisa"
-        [(ngModel)]="model.submitter" name="submitter" #submitter="ngModel">
+        [(ngModel)]="kit.submitter" name="submitter" #submitter="ngModel">
       <div *ngIf="submitter.invalid && (submitter.dirty || submitter.touched)" class="alert alert-danger">
         <div *ngIf="submitter.errors.required">
           Submitter is required.
@@ -81,23 +81,23 @@
     <tbody>
       <tr>
         <th>Usage</th>
-        <td>{{ model.usage }}</td>
+        <td>{{ kit.usage }}</td>
       </tr>
       <tr>
         <th>Size</th>
-        <td>{{ model.size }}</td>
+        <td>{{ kit.size }}</td>
       </tr>
       <tr>
         <th>Units</th>
-        <td>{{ model.units }}</td>
+        <td>{{ kit.units }}</td>
       </tr>
       <tr>
         <th>Observations</th>
-        <td>{{ model.observations }}</td>
+        <td>{{ kit.observations }}</td>
       </tr>
       <tr>
         <th>Submitter</th>
-        <td>{{ model.submitter }}</td>
+        <td>{{ kit.submitter }}</td>
       </tr>
     </tbody>
   </table>
