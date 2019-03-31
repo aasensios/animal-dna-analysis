@@ -16,7 +16,7 @@ import { MaterialComponent } from './components/material/material.component';
 
 // Directives
 import { InputvalidationDirective } from './directives/inputvalidation.directive';
-import { InputvalidationPositiveNumberDirective } from './directives/inputvalidation-positive-number.directive';
+import { InputvalidationNegativeNumberDirective } from './directives/inputvalidation-negative-number.directive';
 import { ForbiddenNameDirective } from './directives/forbidden-name.directive';
 import { ZipCodeDirective } from './directives/zip-code.directive';
 
@@ -28,7 +28,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 // Pagination component
 import { SequenceManagementComponent } from './components/sequence-management/sequence-management.component';
-import { MonomersValidationDirective } from './directives/monomers-validation.directive';
+import { DnaValidationDirective } from './directives/dna-validation.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './components/header/header.component';
 
 // create new path to differents forms
 const appRoutes: Routes = [
@@ -46,12 +48,13 @@ const appRoutes: Routes = [
     LaboratoryComponent,
     InputvalidationDirective,
     MaterialComponent,
-    InputvalidationPositiveNumberDirective,
+    InputvalidationNegativeNumberDirective,
     KitComponent,
     ForbiddenNameDirective,
     SequenceManagementComponent,
     ZipCodeDirective,
-    MonomersValidationDirective
+    DnaValidationDirective,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    NgbModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

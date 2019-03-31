@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import {CookieService} from 'ngx-cookie-service'; // import cookies
-import {LaboratoryService} from '../../services/laboratory.service'; // import services
+import { CookieService } from 'ngx-cookie-service'; // import cookies
+import { LaboratoryService } from '../../services/laboratory.service'; // import services
 
 // Model
 import { Laboratory } from '../../model/Laboratory';
@@ -18,8 +18,10 @@ export class LaboratoryComponent implements OnInit {
 
   @ViewChild('laboratoryForm') laboratoryForm: HTMLFormElement;
 
-  constructor(private cookieService: CookieService,
-              private laboratoryService: LaboratoryService) {}
+  constructor(
+    private cookieService: CookieService,
+    private laboratoryService: LaboratoryService
+  ) {}
 
   // Methods
   // ngOnInit will be executed teh moment the component is loaded
@@ -32,13 +34,12 @@ export class LaboratoryComponent implements OnInit {
 
     if (this.cookieService.check('laboratory')) {
       // The cookie exist
-      const CookieObj: any =
-      JSON.parse(this.cookieService.get('laboratory'));
+      const CookieObj: any = JSON.parse(this.cookieService.get('laboratory'));
       // add in obj reservation
       Object.assign(this.laboratory, CookieObj);
-      // console.log(this.laboratory);
+      console.log(this.laboratory);
       // fix complex objects
-      this.laboratory.setRegion(CookieObj.region);
+      // this.laboratory.setRegion(CookieObj.region);
       // console.log(CookieObj)
     }
   }
@@ -48,7 +49,7 @@ export class LaboratoryComponent implements OnInit {
    * @description create new obj laboratory and set region
    * @author Andrés Tenesaca Burgos
    * @version 2019-03-24
-  */
+   */
   initializeForm() {
     if (!this.laboratory) {
       this.laboratory = new Laboratory(); // create new laboratory
@@ -57,7 +58,7 @@ export class LaboratoryComponent implements OnInit {
       this.laboratoryForm.form.markAsPristine();
 
       // initialize region to first value
-      this.laboratory.setRegion(this.regions[0]);
+      // this.laboratory.setRegion(this.regions[0]);
     }
   }
 
@@ -66,7 +67,7 @@ export class LaboratoryComponent implements OnInit {
    * @description print laboratory object in web console
    * @author Andrés Tenesaca Burgos
    * @version 2019-02-23
-  */
+   */
   laboratoryInput(): void {
     // console.log(this.laboratory);
 

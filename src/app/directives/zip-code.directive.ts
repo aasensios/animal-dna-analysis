@@ -3,20 +3,22 @@ import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 
 @Directive({
   selector: '[appZipCode]',
-  providers: [{provide: NG_VALIDATORS,
-    useExisting: ZipCodeDirective, multi: true}]
+  providers: [
+    { provide: NG_VALIDATORS, useExisting: ZipCodeDirective, multi: true }
+  ]
 })
 export class ZipCodeDirective implements Validator {
+  constructor() {}
 
-  constructor() { }
+  validate(field: AbstractControl): { [key: string]: any } {
+    let validInput = false;
 
-  validate(formFieldToValdiate:AbstractControl): {[key: string]: any}{
-    let validInput: boolean = false;
-
-    if (formFieldToValdiate.value != undefined &&
-      formFieldToValdiate.value.length >=5) {
+    if (field) {
+      if (field.value !== undefined && field.value.length === 5) {
         validInput = true;
+      }
     }
-    return validInput ? null : {IsBelowFive: true};
+
+    return validInput ? null : { IsBelowFive: true };
   }
 }

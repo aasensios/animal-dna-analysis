@@ -1,0 +1,9 @@
+Project repository URL:
+https://github.com/aasensios/animal-dna-analysis
+
+Download as ZIP:
+https://github.com/aasensios/animal-dna-analysis/archive/master.zip
+
+Or clone via Linux Terminal:
+git clone https://github.com/aasensios/animal-dna-analysis.git
+

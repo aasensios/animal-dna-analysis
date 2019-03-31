@@ -12,7 +12,6 @@ import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
   ]
 })
 export class InputvalidationDirective implements Validator {
-
   constructor() {}
 
   /**
@@ -21,18 +20,20 @@ export class InputvalidationDirective implements Validator {
    * @author Andres Tenesaca
    * @version 2019-02-23
    */
-  validate(formField: AbstractControl): { [key: string]: any } {
+  validate(field: AbstractControl): { [key: string]: any } {
     let valid = false;
     const alphabetical = new RegExp('^[a-zA-Z ]+$', 'i');
 
+    // Check the field is defined, to avoid null pointer when accessing the field.value
     if (
-      formField.value !== undefined &&
-      formField.value.length <= 50 &&
-      alphabetical.test(formField.value)
+      field &&
+      field.value !== undefined &&
+      field.value.length <= 50 &&
+      alphabetical.test(field.value)
     ) {
       valid = true;
     }
+
     return valid ? null : { IsNotCorrect: true };
   }
-
 }

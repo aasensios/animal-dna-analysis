@@ -1,11 +1,11 @@
-<div [hidden]="submitted" class="container">
+<div class="container" [hidden]="submitted">
   <h2>Form to order Kits</h2>
   <form (submit)="onSubmit()" #kitForm="ngForm">
 
     <div class="form-group">
       <label for="usage">Usage *</label>
-      <select class="form-control custom-select" id="usage" required [(ngModel)]="kit.usage" name="usage"
-        #usage="ngModel">
+      <select class="form-control custom-select" id="usage" [(ngModel)]="kit.usage" name="usage" #usage="ngModel"
+        required>
         <option *ngFor="let usage of usages" [value]="usage">{{ usage }}</option>
       </select>
       <div [hidden]="usage.valid || usage.pristine" class="alert alert-danger">
@@ -15,8 +15,7 @@
 
     <div class="form-group">
       <label for="usage">Size *</label>
-      <select class="form-control custom-select" id="size" required [(ngModel)]="kit.size" name="size"
-        #size="ngModel">
+      <select class="form-control custom-select" id="size" [(ngModel)]="kit.size" name="size" #size="ngModel" required>
         <option *ngFor="let size of sizes" [value]="size">{{ size }}</option>
       </select>
       <div [hidden]="size.valid || size.pristine" class="alert alert-danger">
@@ -26,10 +25,11 @@
 
     <div class="form-group">
       <label for="units">Units *</label>
-      <input type="number" class="form-control" id="units" required min="1" max="10" [(ngModel)]="kit.units"
-        name="units" #units="ngModel">
+      <input type="text" class="form-control" id="units" min="1" max="10" [(ngModel)]="kit.units" name="units"
+        #units="ngModel" appNegativeNumber required>
       <div *ngIf="units.invalid && (units.dirty || units.touched)" class="alert alert-danger">
-        <div *ngIf="units.errors.required">
+        <!-- FormControl validators -->
+        <!-- <div *ngIf="units.errors.required">
           Units is required.
         </div>
         <div *ngIf="units.errors.min">
@@ -37,25 +37,29 @@
         </div>
         <div *ngIf="units.errors.max">
           Units must be 100 as maximum.
+        </div> -->
+        <!-- The other directive -->
+        <div *ngIf="units.errors.IsBelowZero">
+          Units cannot be negative.
         </div>
       </div>
     </div>
 
     <div class="form-group">
       <label for="observations">Observations</label>
-      <input type="text" class="form-control" id="observations" required maxlength="10" [(ngModel)]="kit.observations"
-        name="observations" #observations="ngModel">
+      <input type="text" class="form-control" id="observations" [(ngModel)]="kit.observations" name="observations"
+        #observations="ngModel">
       <div *ngIf="units.invalid && (units.dirty || units.touched)" class="alert alert-danger">
-        <div *ngIf="units.errors.maxlength">
-          Observations cannot be longer than 10 characters
+        <div *ngIf="units.errors.actualLength > units.errors.requiredLength">
+          Observations cannot be longer than 30 characters
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="submitter">Submitter *</label>
-      <input type="text" class="form-control" id="submitter" required appForbiddenName="marisa"
-        [(ngModel)]="kit.submitter" name="submitter" #submitter="ngModel">
+      <label for="submitter">Submitter * (Hint: Try with your name)</label>
+      <input type="text" class="form-control" id="submitter" appForbiddenName="marisa" [(ngModel)]="kit.submitter"
+        name="submitter" #submitter="ngModel" required>
       <div *ngIf="submitter.invalid && (submitter.dirty || submitter.touched)" class="alert alert-danger">
         <div *ngIf="submitter.errors.required">
           Submitter is required.
@@ -66,41 +70,36 @@
       </div>
     </div>
 
+    <br><br>
     <button type="submit" class="btn btn-success" [disabled]="!kitForm.form.valid">Submit</button>
-    <button type="button" class="btn btn-secondary" (click)="newkit(); kitForm.reset()">Reset</button>
-    <br>
+    <button type="button" class="btn btn-secondary" (click)="kitForm.reset()">Reset</button>
+    <br><br>
     <span>* Required fields</span>
 
   </form>
 </div>
 
 <div [hidden]="!submitted">
-  <h2></h2>
-  <table class="table table-striped table-hover table-sm">
+  <br>
+  <span class="alert alert-success">Data inserted successfully.</span>
+  <br><br>
+  <table class="table table-hover">
     <caption>You submitted the following:</caption>
+    <thead class="thead-dark">
+      <th>Usage</th>
+      <th>Size</th>
+      <th>Units</th>
+      <th>Observations</th>
+      <th>Submitter</th>
+    </thead>
     <tbody>
-      <tr>
-        <th>Usage</th>
-        <td>{{ kit.usage }}</td>
-      </tr>
-      <tr>
-        <th>Size</th>
-        <td>{{ kit.size }}</td>
-      </tr>
-      <tr>
-        <th>Units</th>
-        <td>{{ kit.units }}</td>
-      </tr>
-      <tr>
-        <th>Observations</th>
-        <td>{{ kit.observations }}</td>
-      </tr>
-      <tr>
-        <th>Submitter</th>
-        <td>{{ kit.submitter }}</td>
-      </tr>
+      <td>{{ kit.usage }}</td>
+      <td>{{ kit.size }}</td>
+      <td>{{ kit.units }}</td>
+      <td>{{ kit.observations }}</td>
+      <td>{{ kit.submitter }}</td>
     </tbody>
   </table>
   <br>
-  <button class="btn btn-warning" (click)="submitted=false">Go back</button>
+  <button class="btn btn-warning" (click)="submitted=false">Insert a new sequence</button>
 </div>

@@ -1,4 +1,7 @@
 <div class="container well">
+
+  <app-sequence [sequence]="sequenceSelected" *ngIf="sequenceSelected"></app-sequence>
+
   <form #sequenceManagementForm="ngForm" novalidate>
 
     <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
@@ -28,7 +31,5 @@
     </pagination-controls>
 
   </form>
-
-  <app-sequence [sequence]="sequenceSelected" *ngIf="sequenceSelected"></app-sequence>
 
 </div>

@@ -1,5 +1,5 @@
-<div [hidden]="submitted" class="container">
-  <h2>Form to register a new Sequence</h2>
+<div class="container">
+  <h2>Form to manage a Sequence</h2>
   <form (submit)="onSubmit()" #sequenceForm="ngForm">
     <div class="form-group">
       <div class="form-group">
@@ -11,30 +11,31 @@
       </div>
       <label for="seq">Sequence *</label>
       <input type="text" class="form-control" id="seq" name="seq" #seq="ngModel" [(ngModel)]="sequence.seq"
-        appMonomersValidation required>
+        appDnaValidation required>
 
       <!-- <div *ngIf="seq.invalid && (seq.dirty || seq.touched)" class="alert alert-danger">
         <div *ngIf="seq.errors.required">Sequence is required.</div>
         <div *ngIf="seq.errors.IsNotCorrect && !seq.errors.required">Sequence must be [ACTG] only.</div>
       </div> -->
 
-      <div class="has-error" *ngIf="seq.touched && seq.invalid">
+      <div class="text-danger" *ngIf="seq.touched && seq.invalid">
         <span *ngIf="seq.errors.required">Sequence is required.</span>
-        <span *ngIf="seq.errors.IsNotCorrect && !seq.errors.required">Sequence must be [ACTG] only.</span>
+        <span *ngIf="seq.errors.IsNotCorrect">Sequence must be DNA [ACGT], RNA [ACGU] or amino acid
+          [ACDEFGHIKLMNPQRSTVWXY].</span>
       </div>
 
-
-
     </div>
-    <button type="submit" class="btn btn-success" [disabled]="!sequenceForm.form.valid">Submit</button>
-    <button type="button" class="btn btn-secondary" (click)="sequenceForm.reset()">Reset</button>
-    <br>
     <span>* Required fields</span>
+    <br><br>
+    <button type="submit" class="btn btn-success" [disabled]="!sequenceForm.form.valid">Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+    <button class="btn btn-info" (dblclick)="doubleClick()">Double click me! (and see console log)</button>
+    <br><br>
   </form>
 </div>
 
 <div [hidden]="!submitted">
-  <h2></h2>
+  <span class="alert alert-success">Data inserted successfully.</span>
   <table class="table table-hover">
     <caption>You submitted the following:</caption>
     <thead class="thead-dark">

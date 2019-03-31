@@ -40,11 +40,13 @@ export class SequenceComponent implements OnInit {
     this.sequenceForm.form.markAsPristine();
     // 'pristine' means not touched (virgin state), although the values are empty, the state may be touched.
 
-    // Instantiate a new sequence
-    this.sequence = new Seq();
-
     // Get the molecule types list from service
     this.types = this.sequenceService.getTypes();
+
+    // If no sequence is defined yet, instantiate a new sequence
+    if (!this.sequence) {
+      this.sequence = new Seq();
+    }
 
     // Check if a cookie already exists
     if (this.cookieService.check('sequence')) {
@@ -59,7 +61,11 @@ export class SequenceComponent implements OnInit {
     }
   }
 
-  cleanForm() {
+  resetForm() {
+    this.sequenceForm.reset();
+  }
 
+  doubleClick() {
+    console.log(this.sequence.seq);
   }
 }

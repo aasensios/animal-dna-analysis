@@ -29,7 +29,7 @@ export class KitComponent implements OnInit {
   submitted = false;
 
   // Control of property 'units'
-  unitsControl = new FormControl(1, [Validators.min(1), Validators.max(100)]);
+  // unitsControl: FormControl;
 
   constructor(private kitService: KitService) {}
 
@@ -37,13 +37,13 @@ export class KitComponent implements OnInit {
     this.submitted = true;
   }
 
-  newKit() {
-    this.kit = new Kit();
-    this.unitsControl = new FormControl(1, [
-      Validators.min(1),
-      Validators.max(100)
-    ]);
-  }
+  // newKit() {
+  //   this.kit = new Kit();
+  //   this.unitsControl = new FormControl([
+  //     Validators.min(1),
+  //     Validators.max(100)
+  //   ]);
+  // }
 
   ngOnInit() {
     // Get data from service to populate the select dropdowns
@@ -60,7 +60,7 @@ export class KitComponent implements OnInit {
         Validators.max(100)
       ]),
       observations: new FormControl(this.kit.observations, [
-        Validators.maxLength(50)
+        Validators.maxLength(30)
       ]),
       submitter: new FormControl(this.kit.submitter, [
         Validators.required,

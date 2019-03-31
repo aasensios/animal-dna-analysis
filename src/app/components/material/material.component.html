@@ -4,19 +4,20 @@
       <br/>
       <div class="row">
         <div class="col-xs-12">
-          <h2>(purchases) Material Form</h2>
+          <h2>Material Form (order/purchase)</h2>
         </div>
       </div>
       <br>
       <div class="form-group">
 
-        <label class="col-sm-2 control-label" for="formGroup"> Name* :</label>
+        <label class="col-sm-2 control-label" for="formGroup"> Name *</label>
         <div class="col-sm-4">
+          <span>(blur event handling: type a material and press enter)</span>
           <input class="form-control" type="text" name="matName"
           placeholder="Product name" #matName = "ngModel"
           [(ngModel)]="material.name"
           (keyup.enter)="addMaterial(matName.value)"
-          (blur)="addMaterial(matName.value); matName.value=''"
+          
           appInputMinLength required />
         </div>
 
@@ -27,7 +28,7 @@
             Name must have less tan 50 characters and only accepts letters
           </span>
         </div>
-
+        
         <br/>
 
         <ul><li *ngFor="let material of materials">{{material}}</li></ul>
@@ -48,11 +49,11 @@
 
         <br/>
 
-        <label class="col-sm-2 control-label" for="formGroup"> Price range* :</label>
+        <label class="col-sm-2 control-label" for="formGroup"> Price range *</label>
         <div class="col-sm-4">
           <input class="form-control" type="text" name="matPriceMin"
             #matPriceMin = "ngModel" [(ngModel)]="material.priceMin"
-            placeholder="Min" maxlength="4" appPositiveNumber required />
+            placeholder="Min" maxlength="4" appNegativeNumber required />
 
           <!-- Validation div, only displayed if the ngIf condition is invalid -->
           <div class="has-error" *ngIf="matPriceMin.touched && matPriceMin.invalid">
@@ -66,7 +67,7 @@
 
           <input class="form-control" type="text" name="matPriceMax"
             #matPriceMax = "ngModel" [(ngModel)]="material.priceMax"
-            placeholder="Max" maxlength="4" appPositiveNumber required />
+            placeholder="Max" maxlength="4" appNegativeNumber required />
 
           <!-- Validation div, only displayed if the ngIf condition is invalid -->
           <div class="has-error" *ngIf="matPriceMax.touched && matPriceMax.invalid">
